@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFIS Login - Department of Forensic Sciences</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1d3557 0%, #457b9d 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #212529;
+        }
+
+        .header-bar {
+            background: rgba(0,0,0,0.2);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9em;
+        }
+
+        .header-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gov-seal {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .seal-icon {
+            width: 24px;
+            height: 24px;
+            background: #ffd60a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #1d3557;
+            font-size: 12px;
+        }
+
+        .main-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            padding: 0;
+            width: 100%;
+            max-width: 450px;
+            overflow: hidden;
+        }
+
+        .login-header {
+            background: #1d3557;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .login-header .logo {
+            width: 80px;
+            height: 80px;
+            background: #ffd60a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: #1d3557;
+            margin: 0 auto 20px;
+        }
+
+        .login-header h1 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .login-header p {
+            opacity: 0.9;
+            font-size: 0.95em;
+        }
+
+        .login-body {
+            padding: 40px;
+        }
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert-info {
+            color: #0c5460;
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #495057;
+            font-weight: 500;
+            font-size: 0.95em;
+        }
+
+        .required::after {
+            content: " *";
+            color: #dc3545;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 16px;
+            border: 2px solid #ced4da;
+            border-radius: 4px;
+            font-size: 1em;
+            transition: all 0.15s ease-in-out;
+            background: #fff;
+        }
+
+        .form-control:focus {
+            border-color: #457b9d;
+            outline: 0;
+            box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.1);
+            background: #fff;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+            font-size: 1.2em;
+        }
+
+        .input-group .form-control {
+            padding-left: 50px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 24px;
+            font-size: 1em;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: #1d3557;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: #0f1c2e;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(29, 53, 87, 0.3);
+        }
+
+        .btn-primary:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .form-check input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.1);
+        }
+
+        .form-check label {
+            margin: 0;
+            font-size: 0.9em;
+            cursor: pointer;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .forgot-password a {
+            color: #457b9d;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .security-notice {
+            background: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 0.85em;
+            color: #004085;
+        }
+
+        .security-notice strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .footer {
+            background: rgba(0,0,0,0.2);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85em;
+        }
+
+        .footer-links {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 20px 15px;
+            }
+
+            .login-card {
+                max-width: 100%;
+            }
+
+            .login-header {
+                padding: 25px 20px;
+            }
+
+            .login-body {
+                padding: 30px 25px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <div class="container">
+            <div class="gov-seal">
+                <div class="seal-icon">🔒</div>
+                <span>Official Government System</span>
+            </div>
+            <div>Secure Access Portal</div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="logo">🔍</div>
+                <h1>AFIS Login</h1>
+                <p>Automated Fingerprint Identification System</p>
+            </div>
+
+            <div class="login-body">
+                <!-- Flash messages -->
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ 'danger' if category == 'error' else category }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                <div class="alert alert-info">
+                    <strong>System Access Notice:</strong>
+                    This system is for authorized personnel only. All activities are monitored and logged.
+                </div>
+
+                <form method="POST" action="{{ url_for('login') }}">
+                    <div class="form-group">
+                        <label for="username" class="required">Username / Badge ID</label>
+                        <div class="input-group">
+                            <span class="input-icon">👤</span>
+                            <input type="text" class="form-control" id="username" name="username" 
+                                   required autocomplete="username" placeholder="Enter your badge ID">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="required">Password</label>
+                        <div class="input-group">
+                            <span class="input-icon">🔐</span>
+                            <input type="password" class="form-control" id="password" name="password" 
+                                   required autocomplete="current-password" placeholder="Enter your password">
+                        </div>
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" id="remember_me" name="remember_me">
+                        <label for="remember_me">Keep me signed in on this device</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        Access System
+                    </button>
+                </form>
+
+                <div class="forgot-password">
+                    <a href="{{ url_for('forgot_password') }}">Forgot your password?</a>
+                </div>
+
+                <div class="security-notice">
+                    <strong>Security Reminder:</strong>
+                    Never share your credentials. Log out when finished. Report suspicious activity to IT Security immediately.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>Department of Forensic Sciences - Secure Access Portal</div>
+        <div class="footer-links">
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#security">Security Guidelines</a>
+            <a href="#support">IT Support</a>
+            <a href="#help">Help Desk</a>
+        </div>
+    </div>
+
+    <script>
+        // Form validation
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            
+            if (!username || !password) {
+                e.preventDefault();
+                alert('Please fill in all required fields.');
+                return false;
+            }
+            
+            // Disable submit button to prevent double submission
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Authenticating...';
+        });
+
+        // Auto-focus username field
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('username').focus();
+        });
+    </script>
+</body>
+</html>
