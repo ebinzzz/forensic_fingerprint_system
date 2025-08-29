@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Analysis Report</h1>
+        <div class="report-summary">
+            <p><strong>Case ID:</strong> {{ result.case_id }}</p>
+            <p><strong>Operator ID:</strong> {{ result.operator_id }}</p>
+            <p><strong>Date & Time:</strong> {{ result.timestamp }}</p>
+        </div>
+
+        <div class="result-box {{ 'match' if result.is_match else 'no-match' }}">
+            {% if result.is_match %}
+                <h2>MATCH FOUND</h2>
+                <p>Confidence: {{ "%.2f%%" | format(result.confidence_score * 100) }}</p>
+            {% else %}
+                <h2>NO MATCH</h2>
+                <p>Confidence: {{ "%.2f%%" | format(result.confidence_score * 100) }}</p>
+            {% endif %}
+        </div>
+
+        <h3>Detailed Metrics</h3>
+        <table class="metrics-table">
+            <tbody>
+                <tr>
+                    <td>Matching Keypoints:</td>
+                    <td>{{ result.match_count }}</td>
+                </tr>
+                <tr>
+                    <td>Threshold Used:</td>
+                    <td>{{ "%.2f" | format(result.threshold_used) }}</td>
+                </tr>
+                <tr>
+                    <td>Geometric Verification:</td>
+                    <td>{{ "Valid" if result.geometric_verification else "Invalid" }}</td>
+                </tr>
+                <tr>
+                    <td>Image 1 Quality Score:</td>
+                    <td>{{ "%.2f" | format(result.quality_score_img1) }}</td>
+                </tr>
+                <tr>
+                    <td>Image 2 Quality Score:</td>
+                    <td>{{ "%.2f" | format(result.quality_score_img2) }}</td>
+                </tr>
+                <tr>
+                    <td>Processing Time:</td>
+                    <td>{{ "%.2f seconds" | format(result.processing_time) }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="report-actions">
+            <a href="{{ url_for('index') }}" class="btn">Start New Analysis</a>
+            <a href="{{ url_for('serve_result_file', filename=result_file) }}" class="btn download-btn">Download JSON Report</a>
+            <a href="{{ url_for('download_pdf_report', case_id=result.case_id) }}" class="btn download-btn">Download PDF Report</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,350 @@
+2025-08-29 16:23:32,060 - forensic_fingerprint_matcher - INFO - [__init__:114] - ForensicFingerprintMatcher v1.0.1 initialized
+2025-08-29 16:23:32,113 - werkzeug - INFO - [_log:97] - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-08-29 16:23:32,114 - werkzeug - INFO - [_log:97] - [33mPress CTRL+C to quit[0m
+2025-08-29 16:23:32,117 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-08-29 16:23:34,732 - forensic_fingerprint_matcher - INFO - [__init__:114] - ForensicFingerprintMatcher v1.0.1 initialized
+2025-08-29 16:23:34,760 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-08-29 16:23:34,769 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 794-679-447
+2025-08-29 16:23:43,608 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:23:43] "GET / HTTP/1.1" 200 -
+2025-08-29 16:23:43,778 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:23:43] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-08-29 16:23:45,279 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:23:45] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-08-29 16:24:30,421 - __main__ - INFO - [upload_files:81] - Received files for case CASE_2025_001: uploads\CASE_2025_001_img1_download_1.png and uploads\CASE_2025_001_img2_download.png
+2025-08-29 16:24:30,477 - forensic_fingerprint_matcher - INFO - [match_fingerprints:308] - Case CASE_2025_001: Image 1 - 296x354 pixels, format: .png
+2025-08-29 16:24:30,477 - forensic_fingerprint_matcher - INFO - [match_fingerprints:309] - Case CASE_2025_001: Image 2 - 296x354 pixels, format: .png
+2025-08-29 16:24:30,503 - forensic_fingerprint_matcher - INFO - [match_fingerprints:319] - Case CASE_2025_001: Image quality scores - IMG1: 1.000, IMG2: 1.000
+2025-08-29 16:24:30,769 - forensic_fingerprint_matcher - INFO - [match_fingerprints:338] - Case CASE_2025_001: Keypoints detected - IMG1: 2001, IMG2: 2001
+2025-08-29 16:24:31,001 - forensic_fingerprint_matcher - INFO - [match_fingerprints:362] - Case CASE_2025_001: Geometric verification - Valid: True, Inliers: 38
+2025-08-29 16:24:31,002 - forensic_fingerprint_matcher - INFO - [_log_match_result:483] - AUDIT: {"event_type": "FINGERPRINT_MATCH", "result": {"case_id": "CASE_2025_001", "image1_hash": "6e23a9f0a4d4a6cb29d35c1af0b8560fb3f4a73e335d4033291fd0583fe24a99", "image2_hash": "087fd5c0118137f144d280bd458db8b319650bddfeac8b6f390df04b5a930281", "match_count": 40, "confidence_score": 0.04557721139430285, "is_match": true, "threshold_used": 30.0, "processing_time": 0.58016, "algorithm_version": "1.0.1", "operator_id": "EBIN_BENNY", "timestamp": "2025-08-29T16:24:31.001691", "geometric_verification": true, "quality_score_img1": 1.0, "quality_score_img2": 1.0}, "system_info": {"opencv_version": "4.12.0", "algorithm": "SIFT+FLANN+Geometric"}}
+2025-08-29 16:24:31,003 - forensic_fingerprint_matcher - INFO - [match_fingerprints:395] - Case CASE_2025_001: Match decision - True (confidence: 0.046)
+2025-08-29 16:24:31,049 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:24:31] "POST /upload HTTP/1.1" 200 -
+2025-08-29 16:24:31,112 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:24:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:24:40,446 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:24:40] "GET / HTTP/1.1" 200 -
+2025-08-29 16:24:40,487 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:24:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:24:55,928 - __main__ - INFO - [upload_files:81] - Received files for case CASE_2025_002: uploads\CASE_2025_002_img1_download_1.png and uploads\CASE_2025_002_img2_ebin_left_index_1.bmp
+2025-08-29 16:24:55,955 - forensic_fingerprint_matcher - INFO - [match_fingerprints:308] - Case CASE_2025_002: Image 1 - 296x354 pixels, format: .png
+2025-08-29 16:24:55,956 - forensic_fingerprint_matcher - INFO - [match_fingerprints:309] - Case CASE_2025_002: Image 2 - 296x354 pixels, format: .bmp
+2025-08-29 16:24:55,974 - forensic_fingerprint_matcher - INFO - [match_fingerprints:319] - Case CASE_2025_002: Image quality scores - IMG1: 1.000, IMG2: 1.000
+2025-08-29 16:24:56,075 - forensic_fingerprint_matcher - INFO - [match_fingerprints:338] - Case CASE_2025_002: Keypoints detected - IMG1: 2001, IMG2: 2000
+2025-08-29 16:24:56,228 - forensic_fingerprint_matcher - INFO - [_log_match_result:483] - AUDIT: {"event_type": "FINGERPRINT_MATCH", "result": {"case_id": "CASE_2025_002", "image1_hash": "6e23a9f0a4d4a6cb29d35c1af0b8560fb3f4a73e335d4033291fd0583fe24a99", "image2_hash": "c063e46cbef2e9f99be7e761f282a80e155e8b32f8ce1311f455d59ff3c01d7e", "match_count": 2, "confidence_score": 0.001999500124968758, "is_match": false, "threshold_used": 30.0, "processing_time": 0.298894, "algorithm_version": "1.0.1", "operator_id": "EBIN_BENNY", "timestamp": "2025-08-29T16:24:56.228553", "geometric_verification": false, "quality_score_img1": 1.0, "quality_score_img2": 1.0}, "system_info": {"opencv_version": "4.12.0", "algorithm": "SIFT+FLANN+Geometric"}}
+2025-08-29 16:24:56,229 - forensic_fingerprint_matcher - INFO - [match_fingerprints:395] - Case CASE_2025_002: Match decision - False (confidence: 0.002)
+2025-08-29 16:24:56,232 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:24:56] "POST /upload HTTP/1.1" 200 -
+2025-08-29 16:24:56,256 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:24:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:25:08,763 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:25:08] "GET / HTTP/1.1" 200 -
+2025-08-29 16:25:08,784 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:25:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:26:18,755 - __main__ - INFO - [upload_files:81] - Received files for case CASE_2025_003: uploads\CASE_2025_003_img1_test.bmp and uploads\CASE_2025_003_img2_test2.bmp
+2025-08-29 16:26:18,772 - forensic_fingerprint_matcher - INFO - [match_fingerprints:308] - Case CASE_2025_003: Image 1 - 296x354 pixels, format: .bmp
+2025-08-29 16:26:18,773 - forensic_fingerprint_matcher - INFO - [match_fingerprints:309] - Case CASE_2025_003: Image 2 - 296x354 pixels, format: .bmp
+2025-08-29 16:26:18,780 - forensic_fingerprint_matcher - INFO - [match_fingerprints:319] - Case CASE_2025_003: Image quality scores - IMG1: 1.000, IMG2: 1.000
+2025-08-29 16:26:18,847 - forensic_fingerprint_matcher - INFO - [match_fingerprints:338] - Case CASE_2025_003: Keypoints detected - IMG1: 2000, IMG2: 2000
+2025-08-29 16:26:18,952 - forensic_fingerprint_matcher - INFO - [_log_match_result:483] - AUDIT: {"event_type": "FINGERPRINT_MATCH", "result": {"case_id": "CASE_2025_003", "image1_hash": "f0629c146bdb5b6684e886c5c83aa309908b8165a558f8de289a02d4b6b90187", "image2_hash": "82e0f048c0a6111c2179ff706e866bab77b9df56715eb2e939398394e27cb912", "match_count": 1, "confidence_score": 0.001, "is_match": false, "threshold_used": 30.0, "processing_time": 0.194523, "algorithm_version": "1.0.1", "operator_id": "EBIN_BENNY", "timestamp": "2025-08-29T16:26:18.952506", "geometric_verification": false, "quality_score_img1": 1.0, "quality_score_img2": 1.0}, "system_info": {"opencv_version": "4.12.0", "algorithm": "SIFT+FLANN+Geometric"}}
+2025-08-29 16:26:18,953 - forensic_fingerprint_matcher - INFO - [match_fingerprints:395] - Case CASE_2025_003: Match decision - False (confidence: 0.001)
+2025-08-29 16:26:18,955 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:26:18] "POST /upload HTTP/1.1" 200 -
+2025-08-29 16:26:18,975 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:26:18] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:26:23,107 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:26:23] "GET / HTTP/1.1" 200 -
+2025-08-29 16:26:23,140 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:26:23] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:26:46,436 - __main__ - INFO - [upload_files:81] - Received files for case CASE_2025_004: uploads\CASE_2025_004_img1_ebin_left_index_1.bmp and uploads\CASE_2025_004_img2_test.bmp
+2025-08-29 16:26:46,457 - forensic_fingerprint_matcher - INFO - [match_fingerprints:308] - Case CASE_2025_004: Image 1 - 296x354 pixels, format: .bmp
+2025-08-29 16:26:46,457 - forensic_fingerprint_matcher - INFO - [match_fingerprints:309] - Case CASE_2025_004: Image 2 - 296x354 pixels, format: .bmp
+2025-08-29 16:26:46,467 - forensic_fingerprint_matcher - INFO - [match_fingerprints:319] - Case CASE_2025_004: Image quality scores - IMG1: 1.000, IMG2: 1.000
+2025-08-29 16:26:46,565 - forensic_fingerprint_matcher - INFO - [match_fingerprints:338] - Case CASE_2025_004: Keypoints detected - IMG1: 2000, IMG2: 2000
+2025-08-29 16:26:46,676 - forensic_fingerprint_matcher - INFO - [match_fingerprints:362] - Case CASE_2025_004: Geometric verification - Valid: True, Inliers: 42
+2025-08-29 16:26:46,677 - forensic_fingerprint_matcher - INFO - [_log_match_result:483] - AUDIT: {"event_type": "FINGERPRINT_MATCH", "result": {"case_id": "CASE_2025_004", "image1_hash": "c063e46cbef2e9f99be7e761f282a80e155e8b32f8ce1311f455d59ff3c01d7e", "image2_hash": "f0629c146bdb5b6684e886c5c83aa309908b8165a558f8de289a02d4b6b90187", "match_count": 49, "confidence_score": 0.0504, "is_match": true, "threshold_used": 30.0, "processing_time": 0.240026, "algorithm_version": "1.0.1", "operator_id": "EBIN_BENNY", "timestamp": "2025-08-29T16:26:46.677121", "geometric_verification": true, "quality_score_img1": 1.0, "quality_score_img2": 1.0}, "system_info": {"opencv_version": "4.12.0", "algorithm": "SIFT+FLANN+Geometric"}}
+2025-08-29 16:26:46,677 - forensic_fingerprint_matcher - INFO - [match_fingerprints:395] - Case CASE_2025_004: Match decision - True (confidence: 0.050)
+2025-08-29 16:26:46,679 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:26:46] "POST /upload HTTP/1.1" 200 -
+2025-08-29 16:26:46,698 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:26:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:26:59,272 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:26:59] "GET / HTTP/1.1" 200 -
+2025-08-29 16:26:59,303 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:26:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:27:35,646 - __main__ - INFO - [upload_files:81] - Received files for case CASE_2025_005: uploads\CASE_2025_005_img1_ebin_right_index_2.bmp and uploads\CASE_2025_005_img2_test2.bmp
+2025-08-29 16:27:35,668 - forensic_fingerprint_matcher - INFO - [match_fingerprints:308] - Case CASE_2025_005: Image 1 - 296x354 pixels, format: .bmp
+2025-08-29 16:27:35,668 - forensic_fingerprint_matcher - INFO - [match_fingerprints:309] - Case CASE_2025_005: Image 2 - 296x354 pixels, format: .bmp
+2025-08-29 16:27:35,682 - forensic_fingerprint_matcher - INFO - [match_fingerprints:319] - Case CASE_2025_005: Image quality scores - IMG1: 1.000, IMG2: 1.000
+2025-08-29 16:27:35,801 - forensic_fingerprint_matcher - INFO - [match_fingerprints:338] - Case CASE_2025_005: Keypoints detected - IMG1: 2000, IMG2: 2000
+2025-08-29 16:27:35,911 - forensic_fingerprint_matcher - INFO - [match_fingerprints:362] - Case CASE_2025_005: Geometric verification - Valid: True, Inliers: 129
+2025-08-29 16:27:35,911 - forensic_fingerprint_matcher - INFO - [_log_match_result:483] - AUDIT: {"event_type": "FINGERPRINT_MATCH", "result": {"case_id": "CASE_2025_005", "image1_hash": "dddf84a99dc517c340ab13be91fbb3ea4a7e1d341050b598facd45e346dd0b79", "image2_hash": "82e0f048c0a6111c2179ff706e866bab77b9df56715eb2e939398394e27cb912", "match_count": 132, "confidence_score": 0.1548, "is_match": true, "threshold_used": 30.0, "processing_time": 0.263734, "algorithm_version": "1.0.1", "operator_id": "EBIN_BENNY", "timestamp": "2025-08-29T16:27:35.911685", "geometric_verification": true, "quality_score_img1": 1.0, "quality_score_img2": 1.0}, "system_info": {"opencv_version": "4.12.0", "algorithm": "SIFT+FLANN+Geometric"}}
+2025-08-29 16:27:35,912 - forensic_fingerprint_matcher - INFO - [match_fingerprints:395] - Case CASE_2025_005: Match decision - True (confidence: 0.155)
+2025-08-29 16:27:35,916 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:27:35] "POST /upload HTTP/1.1" 200 -
+2025-08-29 16:27:35,935 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:27:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:27:45,843 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:27:45] "GET / HTTP/1.1" 200 -
+2025-08-29 16:27:45,865 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:27:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:28:58,926 - __main__ - INFO - [upload_files:81] - Received files for case WEB_CASE_64d51751: uploads\WEB_CASE_64d51751_img1_EBIN1.bmp and uploads\WEB_CASE_64d51751_img2_EBIN2.bmp
+2025-08-29 16:28:58,959 - forensic_fingerprint_matcher - INFO - [match_fingerprints:308] - Case WEB_CASE_64d51751: Image 1 - 296x354 pixels, format: .bmp
+2025-08-29 16:28:58,960 - forensic_fingerprint_matcher - INFO - [match_fingerprints:309] - Case WEB_CASE_64d51751: Image 2 - 296x354 pixels, format: .bmp
+2025-08-29 16:28:58,970 - forensic_fingerprint_matcher - INFO - [match_fingerprints:319] - Case WEB_CASE_64d51751: Image quality scores - IMG1: 1.000, IMG2: 1.000
+2025-08-29 16:28:59,096 - forensic_fingerprint_matcher - INFO - [match_fingerprints:338] - Case WEB_CASE_64d51751: Keypoints detected - IMG1: 2000, IMG2: 2000
+2025-08-29 16:28:59,227 - forensic_fingerprint_matcher - INFO - [match_fingerprints:362] - Case WEB_CASE_64d51751: Geometric verification - Valid: True, Inliers: 65
+2025-08-29 16:28:59,228 - forensic_fingerprint_matcher - INFO - [_log_match_result:483] - AUDIT: {"event_type": "FINGERPRINT_MATCH", "result": {"case_id": "WEB_CASE_64d51751", "image1_hash": "5950e8a3e5c6e19ea1618e77093369e74e5c3de26f2fbbf2c2d232607d2cd6ad", "image2_hash": "06df6166e4bc34a0471c837431380703c35feafca139e608df8ceb4af62142f4", "match_count": 66, "confidence_score": 0.07800000000000001, "is_match": true, "threshold_used": 30.0, "processing_time": 0.301243, "algorithm_version": "1.0.1", "operator_id": "EBIN_BENNY", "timestamp": "2025-08-29T16:28:59.228316", "geometric_verification": true, "quality_score_img1": 1.0, "quality_score_img2": 1.0}, "system_info": {"opencv_version": "4.12.0", "algorithm": "SIFT+FLANN+Geometric"}}
+2025-08-29 16:28:59,229 - forensic_fingerprint_matcher - INFO - [match_fingerprints:395] - Case WEB_CASE_64d51751: Match decision - True (confidence: 0.078)
+2025-08-29 16:28:59,232 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:28:59] "POST /upload HTTP/1.1" 200 -
+2025-08-29 16:28:59,250 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:28:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:29:03,627 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:29:03] "GET / HTTP/1.1" 200 -
+2025-08-29 16:29:03,651 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:29:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:30:19,978 - __main__ - INFO - [upload_files:81] - Received files for case WEB_CASE_72708aa7: uploads\WEB_CASE_72708aa7_img1_EBIN3.bmp and uploads\WEB_CASE_72708aa7_img2_EBIN4.bmp
+2025-08-29 16:30:19,995 - forensic_fingerprint_matcher - INFO - [match_fingerprints:308] - Case WEB_CASE_72708aa7: Image 1 - 296x354 pixels, format: .bmp
+2025-08-29 16:30:19,995 - forensic_fingerprint_matcher - INFO - [match_fingerprints:309] - Case WEB_CASE_72708aa7: Image 2 - 296x354 pixels, format: .bmp
+2025-08-29 16:30:20,007 - forensic_fingerprint_matcher - INFO - [match_fingerprints:319] - Case WEB_CASE_72708aa7: Image quality scores - IMG1: 1.000, IMG2: 1.000
+2025-08-29 16:30:20,164 - forensic_fingerprint_matcher - INFO - [match_fingerprints:338] - Case WEB_CASE_72708aa7: Keypoints detected - IMG1: 2000, IMG2: 2000
+2025-08-29 16:30:20,280 - forensic_fingerprint_matcher - INFO - [match_fingerprints:362] - Case WEB_CASE_72708aa7: Geometric verification - Valid: True, Inliers: 23
+2025-08-29 16:30:20,280 - forensic_fingerprint_matcher - INFO - [_log_match_result:483] - AUDIT: {"event_type": "FINGERPRINT_MATCH", "result": {"case_id": "WEB_CASE_72708aa7", "image1_hash": "5e14e92860e07e9fe793901d55c6859eb5eace2d174450e3c96ee720a2204f21", "image2_hash": "1a79dc113b153f3114cb95d2ff8d8e762df750ef0c2bbe63d662facd9916ab84", "match_count": 27, "confidence_score": 0.027599999999999996, "is_match": false, "threshold_used": 30.0, "processing_time": 0.300748, "algorithm_version": "1.0.1", "operator_id": "EBIN_BENNY", "timestamp": "2025-08-29T16:30:20.280636", "geometric_verification": true, "quality_score_img1": 1.0, "quality_score_img2": 1.0}, "system_info": {"opencv_version": "4.12.0", "algorithm": "SIFT+FLANN+Geometric"}}
+2025-08-29 16:30:20,281 - forensic_fingerprint_matcher - INFO - [match_fingerprints:395] - Case WEB_CASE_72708aa7: Match decision - False (confidence: 0.028)
+2025-08-29 16:30:20,283 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:30:20] "POST /upload HTTP/1.1" 200 -
+2025-08-29 16:30:20,304 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:30:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:30:24,817 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:30:24] "GET / HTTP/1.1" 200 -
+2025-08-29 16:30:24,842 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:30:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:30:42,309 - __main__ - INFO - [upload_files:81] - Received files for case WEB_CASE_a969981a: uploads\WEB_CASE_a969981a_img1_EBIN4.bmp and uploads\WEB_CASE_a969981a_img2_EBIN3.bmp
+2025-08-29 16:30:42,327 - forensic_fingerprint_matcher - INFO - [match_fingerprints:308] - Case WEB_CASE_a969981a: Image 1 - 296x354 pixels, format: .bmp
+2025-08-29 16:30:42,328 - forensic_fingerprint_matcher - INFO - [match_fingerprints:309] - Case WEB_CASE_a969981a: Image 2 - 296x354 pixels, format: .bmp
+2025-08-29 16:30:42,338 - forensic_fingerprint_matcher - INFO - [match_fingerprints:319] - Case WEB_CASE_a969981a: Image quality scores - IMG1: 1.000, IMG2: 1.000
+2025-08-29 16:30:42,413 - forensic_fingerprint_matcher - INFO - [match_fingerprints:338] - Case WEB_CASE_a969981a: Keypoints detected - IMG1: 2000, IMG2: 2000
+2025-08-29 16:30:42,524 - forensic_fingerprint_matcher - INFO - [match_fingerprints:362] - Case WEB_CASE_a969981a: Geometric verification - Valid: True, Inliers: 22
+2025-08-29 16:30:42,525 - forensic_fingerprint_matcher - INFO - [_log_match_result:483] - AUDIT: {"event_type": "FINGERPRINT_MATCH", "result": {"case_id": "WEB_CASE_a969981a", "image1_hash": "1a79dc113b153f3114cb95d2ff8d8e762df750ef0c2bbe63d662facd9916ab84", "image2_hash": "5e14e92860e07e9fe793901d55c6859eb5eace2d174450e3c96ee720a2204f21", "match_count": 24, "confidence_score": 0.026399999999999996, "is_match": false, "threshold_used": 30.0, "processing_time": 0.214687, "algorithm_version": "1.0.1", "operator_id": "EBIN_BENNY", "timestamp": "2025-08-29T16:30:42.524865", "geometric_verification": true, "quality_score_img1": 1.0, "quality_score_img2": 1.0}, "system_info": {"opencv_version": "4.12.0", "algorithm": "SIFT+FLANN+Geometric"}}
+2025-08-29 16:30:42,525 - forensic_fingerprint_matcher - INFO - [match_fingerprints:395] - Case WEB_CASE_a969981a: Match decision - False (confidence: 0.026)
+2025-08-29 16:30:42,527 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:30:42] "POST /upload HTTP/1.1" 200 -
+2025-08-29 16:30:42,541 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:30:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:30:46,834 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:30:46] "GET / HTTP/1.1" 200 -
+2025-08-29 16:30:46,856 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:30:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:30:57,944 - __main__ - INFO - [upload_files:81] - Received files for case WEB_CASE_0053802d: uploads\WEB_CASE_0053802d_img1_EBIN1.bmp and uploads\WEB_CASE_0053802d_img2_EBIN3.bmp
+2025-08-29 16:30:57,970 - forensic_fingerprint_matcher - INFO - [match_fingerprints:308] - Case WEB_CASE_0053802d: Image 1 - 296x354 pixels, format: .bmp
+2025-08-29 16:30:57,971 - forensic_fingerprint_matcher - INFO - [match_fingerprints:309] - Case WEB_CASE_0053802d: Image 2 - 296x354 pixels, format: .bmp
+2025-08-29 16:30:57,983 - forensic_fingerprint_matcher - INFO - [match_fingerprints:319] - Case WEB_CASE_0053802d: Image quality scores - IMG1: 1.000, IMG2: 1.000
+2025-08-29 16:30:58,081 - forensic_fingerprint_matcher - INFO - [match_fingerprints:338] - Case WEB_CASE_0053802d: Keypoints detected - IMG1: 2000, IMG2: 2000
+2025-08-29 16:30:58,236 - forensic_fingerprint_matcher - INFO - [_log_match_result:483] - AUDIT: {"event_type": "FINGERPRINT_MATCH", "result": {"case_id": "WEB_CASE_0053802d", "image1_hash": "5950e8a3e5c6e19ea1618e77093369e74e5c3de26f2fbbf2c2d232607d2cd6ad", "image2_hash": "5e14e92860e07e9fe793901d55c6859eb5eace2d174450e3c96ee720a2204f21", "match_count": 1, "confidence_score": 0.001, "is_match": false, "threshold_used": 30.0, "processing_time": 0.291692, "algorithm_version": "1.0.1", "operator_id": "EBIN_BENNY", "timestamp": "2025-08-29T16:30:58.236674", "geometric_verification": false, "quality_score_img1": 1.0, "quality_score_img2": 1.0}, "system_info": {"opencv_version": "4.12.0", "algorithm": "SIFT+FLANN+Geometric"}}
+2025-08-29 16:30:58,237 - forensic_fingerprint_matcher - INFO - [match_fingerprints:395] - Case WEB_CASE_0053802d: Match decision - False (confidence: 0.001)
+2025-08-29 16:30:58,240 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:30:58] "POST /upload HTTP/1.1" 200 -
+2025-08-29 16:30:58,260 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:30:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:31:02,059 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:31:02] "GET / HTTP/1.1" 200 -
+2025-08-29 16:31:02,084 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:31:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:32:20,802 - __main__ - INFO - [upload_files:81] - Received files for case WEB_CASE_c3e992e5: uploads\WEB_CASE_c3e992e5_img1_EBIN3.bmp and uploads\WEB_CASE_c3e992e5_img2_EBIN4.bmp
+2025-08-29 16:32:20,823 - forensic_fingerprint_matcher - INFO - [match_fingerprints:308] - Case WEB_CASE_c3e992e5: Image 1 - 296x354 pixels, format: .bmp
+2025-08-29 16:32:20,824 - forensic_fingerprint_matcher - INFO - [match_fingerprints:309] - Case WEB_CASE_c3e992e5: Image 2 - 296x354 pixels, format: .bmp
+2025-08-29 16:32:20,846 - forensic_fingerprint_matcher - INFO - [match_fingerprints:319] - Case WEB_CASE_c3e992e5: Image quality scores - IMG1: 1.000, IMG2: 1.000
+2025-08-29 16:32:21,002 - forensic_fingerprint_matcher - INFO - [match_fingerprints:338] - Case WEB_CASE_c3e992e5: Keypoints detected - IMG1: 2001, IMG2: 2001
+2025-08-29 16:32:21,113 - forensic_fingerprint_matcher - INFO - [match_fingerprints:362] - Case WEB_CASE_c3e992e5: Geometric verification - Valid: True, Inliers: 76
+2025-08-29 16:32:21,114 - forensic_fingerprint_matcher - INFO - [_log_match_result:483] - AUDIT: {"event_type": "FINGERPRINT_MATCH", "result": {"case_id": "WEB_CASE_c3e992e5", "image1_hash": "3b5eec9ec3ba16bd9f5e0fb41438ad498f63eef496cc8b06d7b3b35ac1cb5d70", "image2_hash": "f66e7898c7b1fd5111652581723ddf58e65add9446a01e973ca6ea9209215b20", "match_count": 76, "confidence_score": 0.09115442278860571, "is_match": true, "threshold_used": 30.0, "processing_time": 0.310955, "algorithm_version": "1.0.1", "operator_id": "EBIN_BENNY", "timestamp": "2025-08-29T16:32:21.114006", "geometric_verification": true, "quality_score_img1": 1.0, "quality_score_img2": 1.0}, "system_info": {"opencv_version": "4.12.0", "algorithm": "SIFT+FLANN+Geometric"}}
+2025-08-29 16:32:21,114 - forensic_fingerprint_matcher - INFO - [match_fingerprints:395] - Case WEB_CASE_c3e992e5: Match decision - True (confidence: 0.091)
+2025-08-29 16:32:21,117 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:32:21] "POST /upload HTTP/1.1" 200 -
+2025-08-29 16:32:21,135 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:32:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:32:25,262 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:32:25] "GET / HTTP/1.1" 200 -
+2025-08-29 16:32:25,292 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:32:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:32:33,640 - __main__ - INFO - [upload_files:81] - Received files for case WEB_CASE_784c3212: uploads\WEB_CASE_784c3212_img1_EBIN3.bmp and uploads\WEB_CASE_784c3212_img2_EBIN3.bmp
+2025-08-29 16:32:33,661 - forensic_fingerprint_matcher - INFO - [match_fingerprints:308] - Case WEB_CASE_784c3212: Image 1 - 296x354 pixels, format: .bmp
+2025-08-29 16:32:33,662 - forensic_fingerprint_matcher - INFO - [match_fingerprints:309] - Case WEB_CASE_784c3212: Image 2 - 296x354 pixels, format: .bmp
+2025-08-29 16:32:33,671 - forensic_fingerprint_matcher - INFO - [match_fingerprints:319] - Case WEB_CASE_784c3212: Image quality scores - IMG1: 1.000, IMG2: 1.000
+2025-08-29 16:32:33,827 - forensic_fingerprint_matcher - INFO - [match_fingerprints:338] - Case WEB_CASE_784c3212: Keypoints detected - IMG1: 2001, IMG2: 2001
+2025-08-29 16:32:33,979 - forensic_fingerprint_matcher - INFO - [match_fingerprints:362] - Case WEB_CASE_784c3212: Geometric verification - Valid: True, Inliers: 2001
+2025-08-29 16:32:33,980 - forensic_fingerprint_matcher - INFO - [_log_match_result:483] - AUDIT: {"event_type": "FINGERPRINT_MATCH", "result": {"case_id": "WEB_CASE_784c3212", "image1_hash": "3b5eec9ec3ba16bd9f5e0fb41438ad498f63eef496cc8b06d7b3b35ac1cb5d70", "image2_hash": "3b5eec9ec3ba16bd9f5e0fb41438ad498f63eef496cc8b06d7b3b35ac1cb5d70", "match_count": 2001, "confidence_score": 1.0, "is_match": true, "threshold_used": 30.0, "processing_time": 0.3397, "algorithm_version": "1.0.1", "operator_id": "EBIN_BENNY", "timestamp": "2025-08-29T16:32:33.980421", "geometric_verification": true, "quality_score_img1": 1.0, "quality_score_img2": 1.0}, "system_info": {"opencv_version": "4.12.0", "algorithm": "SIFT+FLANN+Geometric"}}
+2025-08-29 16:32:33,981 - forensic_fingerprint_matcher - INFO - [match_fingerprints:395] - Case WEB_CASE_784c3212: Match decision - True (confidence: 1.000)
+2025-08-29 16:32:33,984 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:32:33] "POST /upload HTTP/1.1" 200 -
+2025-08-29 16:32:34,004 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:32:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:32:41,964 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:32:41] "GET / HTTP/1.1" 200 -
+2025-08-29 16:32:41,986 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:32:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:32:56,717 - __main__ - INFO - [upload_files:81] - Received files for case WEB_CASE_b697f328: uploads\WEB_CASE_b697f328_img1_EBIN1.bmp and uploads\WEB_CASE_b697f328_img2_EBIN3.bmp
+2025-08-29 16:32:56,737 - forensic_fingerprint_matcher - INFO - [match_fingerprints:308] - Case WEB_CASE_b697f328: Image 1 - 296x354 pixels, format: .bmp
+2025-08-29 16:32:56,738 - forensic_fingerprint_matcher - INFO - [match_fingerprints:309] - Case WEB_CASE_b697f328: Image 2 - 296x354 pixels, format: .bmp
+2025-08-29 16:32:56,747 - forensic_fingerprint_matcher - INFO - [match_fingerprints:319] - Case WEB_CASE_b697f328: Image quality scores - IMG1: 1.000, IMG2: 1.000
+2025-08-29 16:32:56,823 - forensic_fingerprint_matcher - INFO - [match_fingerprints:338] - Case WEB_CASE_b697f328: Keypoints detected - IMG1: 2000, IMG2: 2001
+2025-08-29 16:32:56,990 - forensic_fingerprint_matcher - INFO - [_log_match_result:483] - AUDIT: {"event_type": "FINGERPRINT_MATCH", "result": {"case_id": "WEB_CASE_b697f328", "image1_hash": "5950e8a3e5c6e19ea1618e77093369e74e5c3de26f2fbbf2c2d232607d2cd6ad", "image2_hash": "3b5eec9ec3ba16bd9f5e0fb41438ad498f63eef496cc8b06d7b3b35ac1cb5d70", "match_count": 2, "confidence_score": 0.001999500124968758, "is_match": false, "threshold_used": 30.0, "processing_time": 0.272221, "algorithm_version": "1.0.1", "operator_id": "EBIN_BENNY", "timestamp": "2025-08-29T16:32:56.990379", "geometric_verification": false, "quality_score_img1": 1.0, "quality_score_img2": 1.0}, "system_info": {"opencv_version": "4.12.0", "algorithm": "SIFT+FLANN+Geometric"}}
+2025-08-29 16:32:56,992 - forensic_fingerprint_matcher - INFO - [match_fingerprints:395] - Case WEB_CASE_b697f328: Match decision - False (confidence: 0.002)
+2025-08-29 16:32:56,996 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:32:56] "POST /upload HTTP/1.1" 200 -
+2025-08-29 16:32:57,022 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:32:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:33:01,085 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:33:01] "GET / HTTP/1.1" 200 -
+2025-08-29 16:33:01,104 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:33:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:33:12,360 - __main__ - INFO - [upload_files:81] - Received files for case WEB_CASE_5ca1f255: uploads\WEB_CASE_5ca1f255_img1_EBIN1.bmp and uploads\WEB_CASE_5ca1f255_img2_EBIN2.bmp
+2025-08-29 16:33:12,381 - forensic_fingerprint_matcher - INFO - [match_fingerprints:308] - Case WEB_CASE_5ca1f255: Image 1 - 296x354 pixels, format: .bmp
+2025-08-29 16:33:12,382 - forensic_fingerprint_matcher - INFO - [match_fingerprints:309] - Case WEB_CASE_5ca1f255: Image 2 - 296x354 pixels, format: .bmp
+2025-08-29 16:33:12,397 - forensic_fingerprint_matcher - INFO - [match_fingerprints:319] - Case WEB_CASE_5ca1f255: Image quality scores - IMG1: 1.000, IMG2: 1.000
+2025-08-29 16:33:12,537 - forensic_fingerprint_matcher - INFO - [match_fingerprints:338] - Case WEB_CASE_5ca1f255: Keypoints detected - IMG1: 2000, IMG2: 2000
+2025-08-29 16:33:12,647 - forensic_fingerprint_matcher - INFO - [match_fingerprints:362] - Case WEB_CASE_5ca1f255: Geometric verification - Valid: True, Inliers: 65
+2025-08-29 16:33:12,647 - forensic_fingerprint_matcher - INFO - [_log_match_result:483] - AUDIT: {"event_type": "FINGERPRINT_MATCH", "result": {"case_id": "WEB_CASE_5ca1f255", "image1_hash": "5950e8a3e5c6e19ea1618e77093369e74e5c3de26f2fbbf2c2d232607d2cd6ad", "image2_hash": "06df6166e4bc34a0471c837431380703c35feafca139e608df8ceb4af62142f4", "match_count": 66, "confidence_score": 0.07800000000000001, "is_match": true, "threshold_used": 30.0, "processing_time": 0.286142, "algorithm_version": "1.0.1", "operator_id": "EBIN_BENNY", "timestamp": "2025-08-29T16:33:12.647514", "geometric_verification": true, "quality_score_img1": 1.0, "quality_score_img2": 1.0}, "system_info": {"opencv_version": "4.12.0", "algorithm": "SIFT+FLANN+Geometric"}}
+2025-08-29 16:33:12,648 - forensic_fingerprint_matcher - INFO - [match_fingerprints:395] - Case WEB_CASE_5ca1f255: Match decision - True (confidence: 0.078)
+2025-08-29 16:33:12,650 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:33:12] "POST /upload HTTP/1.1" 200 -
+2025-08-29 16:33:12,667 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:33:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:37:51,011 - werkzeug - INFO - [_log:97] -  * Detected change in 'D:\\forensic_fingerprint_system\\forensic_fingerprint_matcher.py', reloading
+2025-08-29 16:37:51,625 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-08-29 16:37:55,305 - forensic_fingerprint_matcher - INFO - [__init__:114] - ForensicFingerprintMatcher v1.0.2 initialized
+2025-08-29 16:37:55,337 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-08-29 16:37:55,345 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 794-679-447
+2025-08-29 16:38:05,638 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:38:05] "GET / HTTP/1.1" 200 -
+2025-08-29 16:38:05,736 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:38:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:38:16,341 - __main__ - INFO - [upload_files:81] - Received files for case WEB_CASE_bb9c9544: uploads\WEB_CASE_bb9c9544_img1_EBIN3.bmp and uploads\WEB_CASE_bb9c9544_img2_EBIN4.bmp
+2025-08-29 16:38:16,359 - forensic_fingerprint_matcher - INFO - [match_fingerprints:308] - Case WEB_CASE_bb9c9544: Image 1 - 296x354 pixels, format: .bmp
+2025-08-29 16:38:16,359 - forensic_fingerprint_matcher - INFO - [match_fingerprints:309] - Case WEB_CASE_bb9c9544: Image 2 - 296x354 pixels, format: .bmp
+2025-08-29 16:38:16,364 - forensic_fingerprint_matcher - WARNING - [_assess_image_quality:178] - Quality assessment failed: module 'cv2' has no attribute 'Sobbel'
+2025-08-29 16:38:16,366 - forensic_fingerprint_matcher - WARNING - [_assess_image_quality:178] - Quality assessment failed: module 'cv2' has no attribute 'Sobbel'
+2025-08-29 16:38:16,367 - forensic_fingerprint_matcher - INFO - [match_fingerprints:319] - Case WEB_CASE_bb9c9544: Image quality scores - IMG1: 0.000, IMG2: 0.000
+2025-08-29 16:38:16,367 - forensic_fingerprint_matcher - WARNING - [match_fingerprints:323] - Case WEB_CASE_bb9c9544: Poor image quality detected
+2025-08-29 16:38:16,571 - forensic_fingerprint_matcher - INFO - [match_fingerprints:338] - Case WEB_CASE_bb9c9544: Keypoints detected - IMG1: 4000, IMG2: 4000
+2025-08-29 16:38:16,902 - forensic_fingerprint_matcher - INFO - [match_fingerprints:362] - Case WEB_CASE_bb9c9544: Geometric verification - Valid: True, Inliers: 193
+2025-08-29 16:38:16,903 - forensic_fingerprint_matcher - INFO - [_log_match_result:481] - AUDIT: {"event_type": "FINGERPRINT_MATCH", "result": {"case_id": "WEB_CASE_bb9c9544", "image1_hash": "3b5eec9ec3ba16bd9f5e0fb41438ad498f63eef496cc8b06d7b3b35ac1cb5d70", "image2_hash": "f66e7898c7b1fd5111652581723ddf58e65add9446a01e973ca6ea9209215b20", "match_count": 193, "confidence_score": 1.0, "is_match": true, "threshold_used": 50.0, "processing_time": 0.562191, "algorithm_version": "1.0.2", "operator_id": "EBIN_BENNY", "timestamp": "2025-08-29T16:38:16.903616", "geometric_verification": true, "quality_score_img1": 0.0, "quality_score_img2": 0.0}, "system_info": {"opencv_version": "4.12.0", "algorithm": "SIFT+FLANN+Geometric"}}
+2025-08-29 16:38:16,904 - forensic_fingerprint_matcher - INFO - [match_fingerprints:395] - Case WEB_CASE_bb9c9544: Match decision - True (confidence: 1.000)
+2025-08-29 16:38:16,913 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:38:16] "POST /upload HTTP/1.1" 200 -
+2025-08-29 16:38:16,937 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:38:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:38:25,100 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:38:25] "GET / HTTP/1.1" 200 -
+2025-08-29 16:38:25,129 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:38:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:38:36,992 - __main__ - INFO - [upload_files:81] - Received files for case WEB_CASE_7ea6c516: uploads\WEB_CASE_7ea6c516_img1_EBIN1.bmp and uploads\WEB_CASE_7ea6c516_img2_EBIN3.bmp
+2025-08-29 16:38:37,013 - forensic_fingerprint_matcher - INFO - [match_fingerprints:308] - Case WEB_CASE_7ea6c516: Image 1 - 296x354 pixels, format: .bmp
+2025-08-29 16:38:37,014 - forensic_fingerprint_matcher - INFO - [match_fingerprints:309] - Case WEB_CASE_7ea6c516: Image 2 - 296x354 pixels, format: .bmp
+2025-08-29 16:38:37,018 - forensic_fingerprint_matcher - WARNING - [_assess_image_quality:178] - Quality assessment failed: module 'cv2' has no attribute 'Sobbel'
+2025-08-29 16:38:37,020 - forensic_fingerprint_matcher - WARNING - [_assess_image_quality:178] - Quality assessment failed: module 'cv2' has no attribute 'Sobbel'
+2025-08-29 16:38:37,020 - forensic_fingerprint_matcher - INFO - [match_fingerprints:319] - Case WEB_CASE_7ea6c516: Image quality scores - IMG1: 0.000, IMG2: 0.000
+2025-08-29 16:38:37,021 - forensic_fingerprint_matcher - WARNING - [match_fingerprints:323] - Case WEB_CASE_7ea6c516: Poor image quality detected
+2025-08-29 16:38:37,122 - forensic_fingerprint_matcher - INFO - [match_fingerprints:338] - Case WEB_CASE_7ea6c516: Keypoints detected - IMG1: 3601, IMG2: 4000
+2025-08-29 16:38:37,423 - forensic_fingerprint_matcher - INFO - [_log_match_result:481] - AUDIT: {"event_type": "FINGERPRINT_MATCH", "result": {"case_id": "WEB_CASE_7ea6c516", "image1_hash": "5950e8a3e5c6e19ea1618e77093369e74e5c3de26f2fbbf2c2d232607d2cd6ad", "image2_hash": "3b5eec9ec3ba16bd9f5e0fb41438ad498f63eef496cc8b06d7b3b35ac1cb5d70", "match_count": 3, "confidence_score": 0.0, "is_match": false, "threshold_used": 50.0, "processing_time": 0.430176, "algorithm_version": "1.0.2", "operator_id": "EBIN_BENNY", "timestamp": "2025-08-29T16:38:37.423288", "geometric_verification": false, "quality_score_img1": 0.0, "quality_score_img2": 0.0}, "system_info": {"opencv_version": "4.12.0", "algorithm": "SIFT+FLANN+Geometric"}}
+2025-08-29 16:38:37,424 - forensic_fingerprint_matcher - INFO - [match_fingerprints:395] - Case WEB_CASE_7ea6c516: Match decision - False (confidence: 0.000)
+2025-08-29 16:38:37,432 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:38:37] "POST /upload HTTP/1.1" 200 -
+2025-08-29 16:38:37,461 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:38:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:38:49,491 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:38:49] "GET / HTTP/1.1" 200 -
+2025-08-29 16:38:49,513 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:38:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:38:59,225 - __main__ - INFO - [upload_files:81] - Received files for case WEB_CASE_a81f03cd: uploads\WEB_CASE_a81f03cd_img1_download_1.png and uploads\WEB_CASE_a81f03cd_img2_download.png
+2025-08-29 16:38:59,257 - forensic_fingerprint_matcher - INFO - [match_fingerprints:308] - Case WEB_CASE_a81f03cd: Image 1 - 296x354 pixels, format: .png
+2025-08-29 16:38:59,258 - forensic_fingerprint_matcher - INFO - [match_fingerprints:309] - Case WEB_CASE_a81f03cd: Image 2 - 296x354 pixels, format: .png
+2025-08-29 16:38:59,266 - forensic_fingerprint_matcher - WARNING - [_assess_image_quality:178] - Quality assessment failed: module 'cv2' has no attribute 'Sobbel'
+2025-08-29 16:38:59,269 - forensic_fingerprint_matcher - WARNING - [_assess_image_quality:178] - Quality assessment failed: module 'cv2' has no attribute 'Sobbel'
+2025-08-29 16:38:59,270 - forensic_fingerprint_matcher - INFO - [match_fingerprints:319] - Case WEB_CASE_a81f03cd: Image quality scores - IMG1: 0.000, IMG2: 0.000
+2025-08-29 16:38:59,271 - forensic_fingerprint_matcher - WARNING - [match_fingerprints:323] - Case WEB_CASE_a81f03cd: Poor image quality detected
+2025-08-29 16:38:59,458 - forensic_fingerprint_matcher - INFO - [match_fingerprints:338] - Case WEB_CASE_a81f03cd: Keypoints detected - IMG1: 3240, IMG2: 3464
+2025-08-29 16:38:59,687 - forensic_fingerprint_matcher - INFO - [match_fingerprints:362] - Case WEB_CASE_a81f03cd: Geometric verification - Valid: True, Inliers: 80
+2025-08-29 16:38:59,687 - forensic_fingerprint_matcher - INFO - [_log_match_result:481] - AUDIT: {"event_type": "FINGERPRINT_MATCH", "result": {"case_id": "WEB_CASE_a81f03cd", "image1_hash": "6e23a9f0a4d4a6cb29d35c1af0b8560fb3f4a73e335d4033291fd0583fe24a99", "image2_hash": "087fd5c0118137f144d280bd458db8b319650bddfeac8b6f390df04b5a930281", "match_count": 81, "confidence_score": 0.9810355084247336, "is_match": true, "threshold_used": 50.0, "processing_time": 0.461762, "algorithm_version": "1.0.2", "operator_id": "EBIN_BENNY", "timestamp": "2025-08-29T16:38:59.687616", "geometric_verification": true, "quality_score_img1": 0.0, "quality_score_img2": 0.0}, "system_info": {"opencv_version": "4.12.0", "algorithm": "SIFT+FLANN+Geometric"}}
+2025-08-29 16:38:59,688 - forensic_fingerprint_matcher - INFO - [match_fingerprints:395] - Case WEB_CASE_a81f03cd: Match decision - True (confidence: 0.981)
+2025-08-29 16:38:59,690 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:38:59] "POST /upload HTTP/1.1" 200 -
+2025-08-29 16:38:59,712 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:38:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:39:16,871 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:39:16] "GET / HTTP/1.1" 200 -
+2025-08-29 16:39:16,901 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:39:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:39:27,122 - __main__ - INFO - [upload_files:81] - Received files for case WEB_CASE_e4e2c65a: uploads\WEB_CASE_e4e2c65a_img1_test.bmp and uploads\WEB_CASE_e4e2c65a_img2_test2.bmp
+2025-08-29 16:39:27,137 - forensic_fingerprint_matcher - INFO - [match_fingerprints:308] - Case WEB_CASE_e4e2c65a: Image 1 - 296x354 pixels, format: .bmp
+2025-08-29 16:39:27,138 - forensic_fingerprint_matcher - INFO - [match_fingerprints:309] - Case WEB_CASE_e4e2c65a: Image 2 - 296x354 pixels, format: .bmp
+2025-08-29 16:39:27,141 - forensic_fingerprint_matcher - WARNING - [_assess_image_quality:178] - Quality assessment failed: module 'cv2' has no attribute 'Sobbel'
+2025-08-29 16:39:27,143 - forensic_fingerprint_matcher - WARNING - [_assess_image_quality:178] - Quality assessment failed: module 'cv2' has no attribute 'Sobbel'
+2025-08-29 16:39:27,143 - forensic_fingerprint_matcher - INFO - [match_fingerprints:319] - Case WEB_CASE_e4e2c65a: Image quality scores - IMG1: 0.000, IMG2: 0.000
+2025-08-29 16:39:27,144 - forensic_fingerprint_matcher - WARNING - [match_fingerprints:323] - Case WEB_CASE_e4e2c65a: Poor image quality detected
+2025-08-29 16:39:27,254 - forensic_fingerprint_matcher - INFO - [match_fingerprints:338] - Case WEB_CASE_e4e2c65a: Keypoints detected - IMG1: 3876, IMG2: 3717
+2025-08-29 16:39:27,534 - forensic_fingerprint_matcher - INFO - [match_fingerprints:362] - Case WEB_CASE_e4e2c65a: Geometric verification - Valid: False, Inliers: 0
+2025-08-29 16:39:27,536 - forensic_fingerprint_matcher - INFO - [_log_match_result:481] - AUDIT: {"event_type": "FINGERPRINT_MATCH", "result": {"case_id": "WEB_CASE_e4e2c65a", "image1_hash": "f0629c146bdb5b6684e886c5c83aa309908b8165a558f8de289a02d4b6b90187", "image2_hash": "82e0f048c0a6111c2179ff706e866bab77b9df56715eb2e939398394e27cb912", "match_count": 5, "confidence_score": 0.0, "is_match": false, "threshold_used": 50.0, "processing_time": 0.413317, "algorithm_version": "1.0.2", "operator_id": "EBIN_BENNY", "timestamp": "2025-08-29T16:39:27.535899", "geometric_verification": false, "quality_score_img1": 0.0, "quality_score_img2": 0.0}, "system_info": {"opencv_version": "4.12.0", "algorithm": "SIFT+FLANN+Geometric"}}
+2025-08-29 16:39:27,536 - forensic_fingerprint_matcher - INFO - [match_fingerprints:395] - Case WEB_CASE_e4e2c65a: Match decision - False (confidence: 0.000)
+2025-08-29 16:39:27,538 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:39:27] "POST /upload HTTP/1.1" 200 -
+2025-08-29 16:39:27,563 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:39:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:39:34,363 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:39:34] "GET / HTTP/1.1" 200 -
+2025-08-29 16:39:34,384 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:39:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:39:52,635 - __main__ - INFO - [upload_files:81] - Received files for case WEB_CASE_bc890858: uploads\WEB_CASE_bc890858_img1_ebin_left_index_1.bmp and uploads\WEB_CASE_bc890858_img2_test.bmp
+2025-08-29 16:39:52,654 - forensic_fingerprint_matcher - INFO - [match_fingerprints:308] - Case WEB_CASE_bc890858: Image 1 - 296x354 pixels, format: .bmp
+2025-08-29 16:39:52,654 - forensic_fingerprint_matcher - INFO - [match_fingerprints:309] - Case WEB_CASE_bc890858: Image 2 - 296x354 pixels, format: .bmp
+2025-08-29 16:39:52,657 - forensic_fingerprint_matcher - WARNING - [_assess_image_quality:178] - Quality assessment failed: module 'cv2' has no attribute 'Sobbel'
+2025-08-29 16:39:52,659 - forensic_fingerprint_matcher - WARNING - [_assess_image_quality:178] - Quality assessment failed: module 'cv2' has no attribute 'Sobbel'
+2025-08-29 16:39:52,659 - forensic_fingerprint_matcher - INFO - [match_fingerprints:319] - Case WEB_CASE_bc890858: Image quality scores - IMG1: 0.000, IMG2: 0.000
+2025-08-29 16:39:52,660 - forensic_fingerprint_matcher - WARNING - [match_fingerprints:323] - Case WEB_CASE_bc890858: Poor image quality detected
+2025-08-29 16:39:52,813 - forensic_fingerprint_matcher - INFO - [match_fingerprints:338] - Case WEB_CASE_bc890858: Keypoints detected - IMG1: 3801, IMG2: 3876
+2025-08-29 16:39:53,022 - forensic_fingerprint_matcher - INFO - [match_fingerprints:362] - Case WEB_CASE_bc890858: Geometric verification - Valid: True, Inliers: 65
+2025-08-29 16:39:53,022 - forensic_fingerprint_matcher - INFO - [_log_match_result:481] - AUDIT: {"event_type": "FINGERPRINT_MATCH", "result": {"case_id": "WEB_CASE_bc890858", "image1_hash": "c063e46cbef2e9f99be7e761f282a80e155e8b32f8ce1311f455d59ff3c01d7e", "image2_hash": "f0629c146bdb5b6684e886c5c83aa309908b8165a558f8de289a02d4b6b90187", "match_count": 75, "confidence_score": 0.9353163332423091, "is_match": true, "threshold_used": 50.0, "processing_time": 0.386093, "algorithm_version": "1.0.2", "operator_id": "EBIN_BENNY", "timestamp": "2025-08-29T16:39:53.022566", "geometric_verification": true, "quality_score_img1": 0.0, "quality_score_img2": 0.0}, "system_info": {"opencv_version": "4.12.0", "algorithm": "SIFT+FLANN+Geometric"}}
+2025-08-29 16:39:53,023 - forensic_fingerprint_matcher - INFO - [match_fingerprints:395] - Case WEB_CASE_bc890858: Match decision - True (confidence: 0.935)
+2025-08-29 16:39:53,025 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:39:53] "POST /upload HTTP/1.1" 200 -
+2025-08-29 16:39:53,045 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:39:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:44:09,307 - werkzeug - INFO - [_log:97] -  * Detected change in 'D:\\forensic_fingerprint_system\\run_web_app.py', reloading
+2025-08-29 16:44:09,808 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-08-29 16:44:14,610 - forensic_fingerprint_matcher - INFO - [__init__:114] - ForensicFingerprintMatcher v1.0.2 initialized
+2025-08-29 16:44:14,649 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-08-29 16:44:14,658 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 794-679-447
+2025-08-29 16:44:18,213 - werkzeug - INFO - [_log:97] -  * Detected change in 'D:\\forensic_fingerprint_system\\run_web_app.py', reloading
+2025-08-29 16:44:18,606 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-08-29 16:44:22,860 - forensic_fingerprint_matcher - INFO - [__init__:114] - ForensicFingerprintMatcher v1.0.2 initialized
+2025-08-29 16:44:22,890 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-08-29 16:44:22,898 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 794-679-447
+2025-08-29 16:45:32,490 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:32] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+2025-08-29 16:45:32,578 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:32] "GET /upload?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-08-29 16:45:32,589 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:32] "GET /upload?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-08-29 16:45:32,988 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:32] "GET /upload?__debugger__=yes&cmd=resource&f=console.png&s=KBNwGixhKN68jj8OXpQK HTTP/1.1" 200 -
+2025-08-29 16:45:33,768 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:33] "GET /upload?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-08-29 16:45:39,645 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:39] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+2025-08-29 16:45:39,669 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:39] "[36mGET /upload?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:45:39,671 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:39] "[36mGET /upload?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-08-29 16:45:39,685 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:39] "[36mGET /upload?__debugger__=yes&cmd=resource&f=console.png&s=KBNwGixhKN68jj8OXpQK HTTP/1.1[0m" 304 -
+2025-08-29 16:45:46,409 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:46] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-08-29 16:45:46,424 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:46] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-08-29 16:45:46,425 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:46] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-08-29 16:45:46,459 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:46] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=KBNwGixhKN68jj8OXpQK HTTP/1.1" 200 -
+2025-08-29 16:45:46,505 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:46] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-08-29 16:45:47,386 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:47] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-08-29 16:45:47,410 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:47] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:45:47,412 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:47] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-08-29 16:45:47,459 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:47] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png&s=KBNwGixhKN68jj8OXpQK HTTP/1.1[0m" 304 -
+2025-08-29 16:45:47,524 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:47] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-08-29 16:45:51,515 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:51] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-08-29 16:45:51,536 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:51] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:45:51,537 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:51] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-08-29 16:45:51,564 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:51] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png&s=KBNwGixhKN68jj8OXpQK HTTP/1.1[0m" 304 -
+2025-08-29 16:45:51,608 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:51] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-08-29 16:45:51,694 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:51] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-08-29 16:45:51,733 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:51] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:45:51,735 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:51] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-08-29 16:45:51,778 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:51] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png&s=KBNwGixhKN68jj8OXpQK HTTP/1.1[0m" 304 -
+2025-08-29 16:45:51,840 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:51] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-08-29 16:45:52,062 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:52] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-08-29 16:45:52,089 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:52] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:45:52,091 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:52] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-08-29 16:45:52,131 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:52] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png&s=KBNwGixhKN68jj8OXpQK HTTP/1.1[0m" 304 -
+2025-08-29 16:45:52,208 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:45:52] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-08-29 16:46:38,091 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:46:38] "GET / HTTP/1.1" 200 -
+2025-08-29 16:46:38,128 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:46:38] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-08-29 16:46:41,824 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:46:41] "GET / HTTP/1.1" 200 -
+2025-08-29 16:46:41,857 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:46:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:46:42,019 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:46:42] "GET / HTTP/1.1" 200 -
+2025-08-29 16:46:42,041 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:46:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:46:42,252 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:46:42] "GET / HTTP/1.1" 200 -
+2025-08-29 16:46:42,280 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:46:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:46:53,916 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:46:53] "[35m[1mPOST /upload HTTP/1.1[0m" 500 -
+2025-08-29 16:46:53,939 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:46:53] "[36mGET /upload?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:46:53,941 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:46:53] "[36mGET /upload?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-08-29 16:46:53,975 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:46:53] "[36mGET /upload?__debugger__=yes&cmd=resource&f=console.png&s=KBNwGixhKN68jj8OXpQK HTTP/1.1[0m" 304 -
+2025-08-29 16:46:54,021 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:46:54] "[36mGET /upload?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-08-29 16:51:58,639 - werkzeug - INFO - [_log:97] -  * Detected change in 'D:\\forensic_fingerprint_system\\forensic_fingerprint_matcher.py', reloading
+2025-08-29 16:51:59,136 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-08-29 16:52:03,482 - forensic_fingerprint_matcher - INFO - [__init__:114] - ForensicFingerprintMatcher v1.0.2 initialized
+2025-08-29 16:52:03,518 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-08-29 16:52:03,526 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 794-679-447
+2025-08-29 16:52:06,748 - werkzeug - INFO - [_log:97] -  * Detected change in 'D:\\forensic_fingerprint_system\\run_web_app.py', reloading
+2025-08-29 16:52:07,039 - werkzeug - INFO - [_log:97] -  * Restarting with stat
+2025-08-29 16:52:10,697 - forensic_fingerprint_matcher - INFO - [__init__:114] - ForensicFingerprintMatcher v1.0.2 initialized
+2025-08-29 16:52:10,756 - werkzeug - WARNING - [_log:97] -  * Debugger is active!
+2025-08-29 16:52:10,770 - werkzeug - INFO - [_log:97] -  * Debugger PIN: 794-679-447
+2025-08-29 16:52:46,634 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:52:46] "GET / HTTP/1.1" 200 -
+2025-08-29 16:52:46,757 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:52:46] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-08-29 16:52:47,595 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:52:47] "GET / HTTP/1.1" 200 -
+2025-08-29 16:52:47,614 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:52:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:52:47,930 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:52:47] "GET / HTTP/1.1" 200 -
+2025-08-29 16:52:47,954 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:52:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:53:04,197 - forensic_fingerprint_matcher - INFO - [match_fingerprints:308] - Case CASE_2025_008: Image 1 - 296x354 pixels, format: .bmp
+2025-08-29 16:53:04,198 - forensic_fingerprint_matcher - INFO - [match_fingerprints:309] - Case CASE_2025_008: Image 2 - 296x354 pixels, format: .bmp
+2025-08-29 16:53:04,207 - forensic_fingerprint_matcher - WARNING - [_assess_image_quality:178] - Quality assessment failed: module 'cv2' has no attribute 'Sobbel'
+2025-08-29 16:53:04,209 - forensic_fingerprint_matcher - WARNING - [_assess_image_quality:178] - Quality assessment failed: module 'cv2' has no attribute 'Sobbel'
+2025-08-29 16:53:04,209 - forensic_fingerprint_matcher - INFO - [match_fingerprints:319] - Case CASE_2025_008: Image quality scores - IMG1: 0.000, IMG2: 0.000
+2025-08-29 16:53:04,209 - forensic_fingerprint_matcher - WARNING - [match_fingerprints:323] - Case CASE_2025_008: Poor image quality detected
+2025-08-29 16:53:04,354 - forensic_fingerprint_matcher - INFO - [match_fingerprints:338] - Case CASE_2025_008: Keypoints detected - IMG1: 3601, IMG2: 4000
+2025-08-29 16:53:04,638 - forensic_fingerprint_matcher - INFO - [match_fingerprints:362] - Case CASE_2025_008: Geometric verification - Valid: False, Inliers: 6
+2025-08-29 16:53:04,638 - forensic_fingerprint_matcher - INFO - [_log_match_result:481] - AUDIT: {"event_type": "FINGERPRINT_MATCH", "result": {"case_id": "CASE_2025_008", "image1_hash": "5950e8a3e5c6e19ea1618e77093369e74e5c3de26f2fbbf2c2d232607d2cd6ad", "image2_hash": "3b5eec9ec3ba16bd9f5e0fb41438ad498f63eef496cc8b06d7b3b35ac1cb5d70", "match_count": 17, "confidence_score": 0.0, "is_match": false, "threshold_used": 37.5, "processing_time": 0.467011, "algorithm_version": "1.0.2", "operator_id": "EBIN_BENNY", "timestamp": "2025-08-29T16:53:04.638831", "geometric_verification": false, "quality_score_img1": 0.0, "quality_score_img2": 0.0}, "system_info": {"opencv_version": "4.12.0", "algorithm": "SIFT+FLANN+Geometric"}}
+2025-08-29 16:53:04,639 - forensic_fingerprint_matcher - INFO - [match_fingerprints:395] - Case CASE_2025_008: Match decision - False (confidence: 0.000)
+2025-08-29 16:53:04,643 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:53:04] "[32mPOST /upload HTTP/1.1[0m" 302 -
+2025-08-29 16:53:04,680 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:53:04] "[35m[1mGET /results/CASE_2025_008 HTTP/1.1[0m" 500 -
+2025-08-29 16:53:04,703 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:53:04] "GET /results/CASE_2025_008?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-08-29 16:53:04,704 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:53:04] "GET /results/CASE_2025_008?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-08-29 16:53:04,731 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:53:04] "GET /results/CASE_2025_008?__debugger__=yes&cmd=resource&f=console.png&s=0izMhtwLmIWnY4OoHNSx HTTP/1.1" 200 -
+2025-08-29 16:53:04,781 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:53:04] "GET /results/CASE_2025_008?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-08-29 16:53:17,362 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:53:17] "GET /results/CASE_2025_008 HTTP/1.1" 200 -
+2025-08-29 16:53:17,393 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:53:17] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:53:34,604 - forensic_fingerprint_matcher - INFO - [match_fingerprints:308] - Case CASE_2025_008: Image 1 - 296x354 pixels, format: .bmp
+2025-08-29 16:53:34,605 - forensic_fingerprint_matcher - INFO - [match_fingerprints:309] - Case CASE_2025_008: Image 2 - 296x354 pixels, format: .bmp
+2025-08-29 16:53:34,608 - forensic_fingerprint_matcher - WARNING - [_assess_image_quality:178] - Quality assessment failed: module 'cv2' has no attribute 'Sobbel'
+2025-08-29 16:53:34,610 - forensic_fingerprint_matcher - WARNING - [_assess_image_quality:178] - Quality assessment failed: module 'cv2' has no attribute 'Sobbel'
+2025-08-29 16:53:34,610 - forensic_fingerprint_matcher - INFO - [match_fingerprints:319] - Case CASE_2025_008: Image quality scores - IMG1: 0.000, IMG2: 0.000
+2025-08-29 16:53:34,611 - forensic_fingerprint_matcher - WARNING - [match_fingerprints:323] - Case CASE_2025_008: Poor image quality detected
+2025-08-29 16:53:34,712 - forensic_fingerprint_matcher - INFO - [match_fingerprints:338] - Case CASE_2025_008: Keypoints detected - IMG1: 4000, IMG2: 4000
+2025-08-29 16:53:35,025 - forensic_fingerprint_matcher - INFO - [match_fingerprints:362] - Case CASE_2025_008: Geometric verification - Valid: True, Inliers: 353
+2025-08-29 16:53:35,025 - forensic_fingerprint_matcher - INFO - [_log_match_result:481] - AUDIT: {"event_type": "FINGERPRINT_MATCH", "result": {"case_id": "CASE_2025_008", "image1_hash": "3b5eec9ec3ba16bd9f5e0fb41438ad498f63eef496cc8b06d7b3b35ac1cb5d70", "image2_hash": "f66e7898c7b1fd5111652581723ddf58e65add9446a01e973ca6ea9209215b20", "match_count": 361, "confidence_score": 1.0, "is_match": true, "threshold_used": 37.5, "processing_time": 0.435819, "algorithm_version": "1.0.2", "operator_id": "EBIN_BENNY", "timestamp": "2025-08-29T16:53:35.025749", "geometric_verification": true, "quality_score_img1": 0.0, "quality_score_img2": 0.0}, "system_info": {"opencv_version": "4.12.0", "algorithm": "SIFT+FLANN+Geometric"}}
+2025-08-29 16:53:35,026 - forensic_fingerprint_matcher - INFO - [match_fingerprints:395] - Case CASE_2025_008: Match decision - True (confidence: 1.000)
+2025-08-29 16:53:35,028 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:53:35] "[32mPOST /upload HTTP/1.1[0m" 302 -
+2025-08-29 16:53:35,036 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:53:35] "GET /results/CASE_2025_008 HTTP/1.1" 200 -
+2025-08-29 16:53:35,058 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:53:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-08-29 16:53:38,978 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:53:38] "[35m[1mGET /download-pdf/CASE_2025_008 HTTP/1.1[0m" 500 -
+2025-08-29 16:53:39,005 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:53:39] "GET /download-pdf/CASE_2025_008?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-08-29 16:53:39,007 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:53:39] "GET /download-pdf/CASE_2025_008?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-08-29 16:53:39,036 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:53:39] "GET /download-pdf/CASE_2025_008?__debugger__=yes&cmd=resource&f=console.png&s=0izMhtwLmIWnY4OoHNSx HTTP/1.1" 200 -
+2025-08-29 16:53:39,116 - werkzeug - INFO - [_log:97] - 127.0.0.1 - - [29/Aug/2025 16:53:39] "GET /download-pdf/CASE_2025_008?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-08-29 16:55:06,194 - werkzeug - INFO - [_log:97] -  * Detected change in 'D:\\forensic_fingerprint_system\\run_web_app.py', reloading

@@ -1,0 +1,16 @@
+{
+  "case_id": "CASE_2025_008",
+  "image1_hash": "3b5eec9ec3ba16bd9f5e0fb41438ad498f63eef496cc8b06d7b3b35ac1cb5d70",
+  "image2_hash": "f66e7898c7b1fd5111652581723ddf58e65add9446a01e973ca6ea9209215b20",
+  "match_count": 361,
+  "confidence_score": 1.0,
+  "is_match": true,
+  "threshold_used": 37.5,
+  "processing_time": 0.435819,
+  "algorithm_version": "1.0.2",
+  "operator_id": "EBIN_BENNY",
+  "timestamp": "2025-08-29T16:53:35.025749",
+  "geometric_verification": true,
+  "quality_score_img1": 0.0,
+  "quality_score_img2": 0.0
+}
