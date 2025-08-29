@@ -1,0 +1,7 @@
+# Ignore all files in uploads and forensic_results
+uploads/*
+forensic_results/*
+
+# Keep the directories themselves
+!uploads/.gitkeep
+!forensic_results/.gitkeep
