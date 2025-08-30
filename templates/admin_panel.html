@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Administration - AFIS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            line-height: 1.6;
+        }
+
+        .header-bar {
+            background: #1d3557;
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9em;
+        }
+
+        .header-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gov-seal {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .seal-icon {
+            width: 24px;
+            height: 24px;
+            background: #ffd60a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #1d3557;
+            font-size: 12px;
+        }
+
+        .main-header {
+            background: white;
+            border-bottom: 3px solid #457b9d;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .main-header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-menu {
+            background: #457b9d;
+            padding: 0;
+        }
+
+        .nav-menu .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .nav-item {
+            flex: 1;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: #1d3557;
+        }
+
+        .main-container {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .admin-header {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .admin-title {
+            font-size: 2.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .admin-subtitle {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-top: 4px solid #457b9d;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .stat-card.users {
+            border-top-color: #17a2b8;
+        }
+
+        .stat-card.cases {
+            border-top-color: #28a745;
+        }
+
+        .stat-card.matches {
+            border-top-color: #ffc107;
+        }
+
+        .stat-card.recent {
+            border-top-color: #6f42c1;
+        }
+
+        .stat-card.database {
+            border-top-color: #fd7e14;
+        }
+
+        .stat-value {
+            font-size: 2.8em;
+            font-weight: 700;
+            color: #1d3557;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: #6c757d;
+            font-weight: 500;
+            font-size: 0.95em;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .panel-header {
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .panel-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #1d3557;
+        }
+
+        .panel-body {
+            padding: 25px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .activity-list {
+            list-style: none;
+        }
+
+        .activity-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-user {
+            font-weight: 600;
+            color: #1d3557;
+            font-size: 0.9em;
+        }
+
+        .activity-action {
+            color: #495057;
+            font-size: 0.85em;
+            margin-top: 2px;
+        }
+
+        .activity-details {
+            color: #6c757d;
+            font-size: 0.8em;
+            margin-top: 2px;
+        }
+
+        .activity-time {
+            font-size: 0.75em;
+            color: #6c757d;
+            white-space: nowrap;
+            margin-left: 15px;
+        }
+
+        .top-users-list {
+            list-style: none;
+        }
+
+        .user-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .user-item:last-child {
+            border-bottom: none;
+        }
+
+        .user-info {
+            flex: 1;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: #1d3557;
+        }
+
+        .user-badge {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+
+        .user-cases {
+            background: #457b9d;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .admin-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .action-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .action-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .action-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: #457b9d;
+        }
+
+        .action-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #1d3557;
+            margin-bottom: 10px;
+        }
+
+        .action-description {
+            color: #6c757d;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .btn-primary {
+            background: #1d3557;
+            color: white;
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-info {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .btn-warning {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+        }
+
+        .footer {
+            background: #1d3557;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .admin-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu .container {
+                flex-direction: column;
+            }
+
+            .nav-item {
+                flex: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <div class="container">
+            <div class="gov-seal">
+                <div class="seal-icon">🔒</div>
+                <span>Administrative Portal</span>
+            </div>
+            <div>System Administrator Access</div>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="container">
+            <div>
+                <h1 style="font-size: 1.8em; color: #1d3557; font-weight: 600; margin-bottom: 5px;">Department of Forensic Sciences</h1>
+                <p style="font-size: 1.2em; color: #457b9d;">System Administration Panel</p>
+            </div>
+            <div style="text-align: right;">
+                <div style="font-weight: 600; color: #1d3557;">{{ session.full_name }}</div>
+                <div style="font-size: 0.9em; color: #6c757d;">Administrator • {{ session.badge_id }}</div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <div class="nav-item">
+                <a href="{{ url_for('dashboard') }}" class="nav-link">Dashboard</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('new_case') }}" class="nav-link">New Analysis</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('list_cases') }}" class="nav-link">All Cases</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('profile') }}" class="nav-link">Profile</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('admin_panel') }}" class="nav-link active">Administration</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="admin-header">
+            <h2 class="admin-title">System Administration</h2>
+            <p class="admin-subtitle">Monitor and manage the AFIS forensic analysis system</p>
+        </div>
+
+        <!-- System Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card users">
+                <div class="stat-value">{{ stats.total_users }}</div>
+                <div class="stat-label">Active Users</div>
+            </div>
+            <div class="stat-card cases">
+                <div class="stat-value">{{ stats.total_cases }}</div>
+                <div class="stat-label">Total Cases</div>
+            </div>
+            <div class="stat-card matches">
+                <div class="stat-value">{{ stats.total_matches }}</div>
+                <div class="stat-label">Total Matches</div>
+            </div>
+            <div class="stat-card recent">
+                <div class="stat-value">{{ stats.recent_cases }}</div>
+                <div class="stat-label">Cases This Week</div>
+            </div>
+            <div class="stat-card database">
+                <div class="stat-value">{{ stats.database_images }}</div>
+                <div class="stat-label">Database Images</div>
+            </div>
+        </div>
+
+        <!-- Admin Actions -->
+        <div class="admin-actions">
+            <div class="action-card">
+                <div class="action-icon">👥</div>
+                <h3 class="action-title">User Management</h3>
+                <p class="action-description">Create, edit, and manage system users and permissions</p>
+                <a href="{{ url_for('list_users') }}" class="btn btn-primary">Manage Users</a>
+            </div>
+            
+            <div class="action-card">
+                <div class="action-icon">📊</div>
+                <h3 class="action-title">System Reports</h3>
+                <p class="action-description">Generate comprehensive system usage and performance reports</p>
+                <button class="btn btn-success" onclick="generateSystemReport()">Generate Report</button>
+            </div>
+            
+            <div class="action-card">
+                <div class="action-icon">🗄️</div>
+                <h3 class="action-title">Database Management</h3>
+                <p class="action-description">Manage fingerprint database and system maintenance</p>
+                <button class="btn btn-info" onclick="showDatabaseInfo()">Database Info</button>
+            </div>
+            
+            <div class="action-card">
+                <div class="action-icon">⚙️</div>
+                <h3 class="action-title">System Settings</h3>
+                <p class="action-description">Configure system parameters and security settings</p>
+                <button class="btn btn-warning" onclick="showSystemSettings()">Settings</button>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <!-- Recent System Activity -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h3 class="panel-title">Recent System Activity</h3>
+                    <button class="btn btn-primary btn-sm" onclick="refreshActivity()">Refresh</button>
+                </div>
+                <div class="panel-body">
+                    {% if recent_logs %}
+                        <ul class="activity-list">
+                            {% for log in recent_logs %}
+                            <li class="activity-item">
+                                <div class="activity-content">
+                                    <div class="activity-user">{{ log.user_id }}</div>
+                                    <div class="activity-action">{{ log.action|replace('_', ' ')|title }}</div>
+                                    {% if log.details %}
+                                        <div class="activity-details">{{ log.details }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="activity-time">{{ log.timestamp[:16] }}</div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <div class="empty-state">
+                            <h3>No Recent Activity</h3>
+                            <p>System activity will appear here</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Top Users -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h3 class="panel-title">Top Users</h3>
+                </div>
+                <div class="panel-body">
+                    {% if top_users %}
+                        <ul class="top-users-list">
+                            {% for user in top_users %}
+                            <li class="user-item">
+                                <div class="user-info">
+                                    <div class="user-name">{{ user.full_name }}</div>
+                                    <div class="user-badge">{{ user.badge_id }}</div>
+                                </div>
+                                <div class="user-cases">{{ user.case_count }}</div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <div class="empty-state">
+                            <h3>No User Data</h3>
+                            <p>User statistics will appear here</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>Department of Forensic Sciences - System Administration</div>
+    </div>
+
+    <script>
+        function generateSystemReport() {
+            // Placeholder for system report generation
+            alert('System report generation feature coming soon!');
+        }
+
+        function showDatabaseInfo() {
+            alert(`Database Information:\n\nTotal Images: {{ stats.database_images }}\nLocation: database/\nSupported Formats: JPEG, PNG, BMP, TIFF`);
+        }
+
+        function showSystemSettings() {
+            alert('System settings interface coming soon!');
+        }
+
+        function refreshActivity() {
+            window.location.reload();
+        }
+
+        // Auto-refresh activity every 5 minutes
+        setInterval(function() {
+            const activityPanel = document.querySelector('.activity-list');
+            if (activityPanel) {
+                fetch('/api/status')
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('System status:', data);
+                    })
+                    .catch(error => console.error('Error fetching status:', error));
+            }
+        }, 300000); // 5 minutes
+    </script>
+</body>
+</html>

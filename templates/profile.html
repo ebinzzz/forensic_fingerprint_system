@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - AFIS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            line-height: 1.6;
+        }
+
+        .header-bar {
+            background: #1d3557;
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9em;
+        }
+
+        .header-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .main-header {
+            background: white;
+            border-bottom: 3px solid #457b9d;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .main-header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-menu {
+            background: #457b9d;
+            padding: 0;
+        }
+
+        .nav-menu .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .nav-item {
+            flex: 1;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: #1d3557;
+        }
+
+        .main-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            height: fit-content;
+        }
+
+        .profile-header {
+            background: #1d3557;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background: #457b9d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: white;
+            margin: 0 auto 20px;
+        }
+
+        .profile-name {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .profile-role {
+            opacity: 0.9;
+        }
+
+        .profile-info {
+            padding: 25px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 500;
+            color: #495057;
+        }
+
+        .info-value {
+            color: #1d3557;
+            font-weight: 600;
+        }
+
+        .stats-section {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            padding: 20px 25px;
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #1d3557;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: #dee2e6;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: 700;
+            color: #1d3557;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #6c757d;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .form-section {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-top: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #495057;
+            font-weight: 500;
+        }
+
+        .required::after {
+            content: " *";
+            color: #dc3545;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #ced4da;
+            border-radius: 4px;
+            font-size: 0.95em;
+            transition: border-color 0.15s ease-in-out;
+        }
+
+        .form-control:focus {
+            border-color: #457b9d;
+            outline: 0;
+            box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.1);
+        }
+
+        .form-body {
+            padding: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 0.95em;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .btn-primary {
+            background: #1d3557;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .form-help {
+            font-size: 0.85em;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+
+        .password-section {
+            border-top: 1px solid #dee2e6;
+            margin-top: 30px;
+            padding-top: 25px;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+        }
+
+        .footer {
+            background: #1d3557;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu .container {
+                flex-direction: column;
+            }
+
+            .nav-item {
+                flex: none;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <div class="container">
+            <div class="gov-seal">
+                <div class="seal-icon">👤</div>
+                <span>User Profile Portal</span>
+            </div>
+            <div>Personal Settings</div>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="container">
+            <div>
+                <h1 style="font-size: 1.8em; color: #1d3557; font-weight: 600; margin-bottom: 5px;">Department of Forensic Sciences</h1>
+                <p style="font-size: 1.2em; color: #457b9d;">User Profile Management</p>
+            </div>
+            <div style="text-align: right;">
+                <div style="font-weight: 600; color: #1d3557;">{{ session.full_name }}</div>
+                <div style="font-size: 0.9em; color: #6c757d;">{{ session.role|title }}</div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container"> 
+            <div class="nav-item">
+                <a href="{{ url_for('dashboard') }}" class="nav-link">Dashboard</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('new_case') }}" class="nav-link">New Analysis</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('list_cases') }}" class="nav-link">All Cases</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('profile') }}" class="nav-link active">Profile</a>
+            </div>
+            {% if session.role == 'admin' %}
+            <div class="nav-item">
+                <a href="{{ url_for('admin_panel') }}" class="nav-link">Administration</a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="profile-grid">
+            <!-- Profile Information -->
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="profile-avatar">{{ user.full_name[0]|upper }}</div>
+                    <h2 class="profile-name">{{ user.full_name }}</h2>
+                    <p class="profile-role">{{ user.role|title }} • {{ user.badge_id }}</p>
+                </div>
+                <div class="profile-info">
+                    <div class="info-item">
+                        <span class="info-label">Username:</span>
+                        <span class="info-value">{{ user.username }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Badge ID:</span>
+                        <span class="info-value">{{ user.badge_id }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Department:</span>
+                        <span class="info-value">{{ user.department or 'Not specified' }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Account Created:</span>
+                        <span class="info-value">{{ user.created_at[:10] }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Last Login:</span>
+                        <span class="info-value">{{ user.last_login[:16] if user.last_login else 'Current session' }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Status:</span>
+                        <span class="info-value" style="color: #28a745;">Active</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Statistics -->
+            <div class="stats-section">
+                <div class="section-header">
+                    <h3 class="section-title">Your Activity Statistics</h3>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value">{{ stats.total_cases or 0 }}</div>
+                        <div class="stat-label">Total Cases</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">{{ stats.total_matches or 0 }}</div>
+                        <div class="stat-label">Matches Found</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">{{ "%.1f"|format(stats.avg_processing_time or 0) }}s</div>
+                        <div class="stat-label">Avg Process Time</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Update Profile Form -->
+        <div class="form-section">
+            <div class="section-header">
+                <h3 class="section-title">Update Profile Information</h3>
+            </div>
+            <div class="form-body">
+                <form method="POST" action="{{ url_for('update_profile') }}">
+                    <div class="form-group">
+                        <label for="full_name" class="required">Full Name</label>
+                        <input type="text" id="full_name" name="full_name" class="form-control" 
+                               value="{{ user.full_name }}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="department">Department</label>
+                        <select id="department" name="department" class="form-control">
+                            <option value="">Select Department</option>
+                            <option value="Forensics" {{ 'selected' if user.department == 'Forensics' }}>Forensics</option>
+                            <option value="Criminal Investigation" {{ 'selected' if user.department == 'Criminal Investigation' }}>Criminal Investigation</option>
+                            <option value="Lab Services" {{ 'selected' if user.department == 'Lab Services' }}>Lab Services</option>
+                            <option value="IT" {{ 'selected' if user.department == 'IT' }}>Information Technology</option>
+                            <option value="Administration" {{ 'selected' if user.department == 'Administration' }}>Administration</option>
+                        </select>
+                    </div>
+
+                    <div class="password-section">
+                        <h4 style="color: #1d3557; margin-bottom: 15px;">Change Password (Optional)</h4>
+                        
+                        <div class="form-group">
+                            <label for="current_password">Current Password</label>
+                            <input type="password" id="current_password" name="current_password" class="form-control"
+                                   autocomplete="current-password">
+                            <div class="form-help">Required only if changing password</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="new_password">New Password</label>
+                            <input type="password" id="new_password" name="new_password" class="form-control"
+                                   autocomplete="new-password">
+                            <div class="form-help">Minimum 8 characters</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirm_password">Confirm New Password</label>
+                            <input type="password" id="confirm_password" name="confirm_password" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>Department of Forensic Sciences - User Profile Management</div>
+    </div>
+
+    <script>
+        // Form validation
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const newPassword = document.getElementById('new_password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            const currentPassword = document.getElementById('current_password').value;
+            
+            if (newPassword || confirmPassword) {
+                if (!currentPassword) {
+                    e.preventDefault();
+                    alert('Current password is required to change password.');
+                    return false;
+                }
+                
+                if (newPassword !== confirmPassword) {
+                    e.preventDefault();
+                    alert('New password and confirmation do not match.');
+                    return false;
+                }
+                
+                if (newPassword.length < 8) {
+                    e.preventDefault();
+                    alert('New password must be at least 8 characters long.');
+                    return false;
+                }
+            }
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Updating...';
+        });
+
+        // Clear password fields if user doesn't want to change password
+        document.getElementById('full_name').addEventListener('input', function() {
+            if (!document.getElementById('new_password').value) {
+                document.getElementById('current_password').value = '';
+            }
+        });
+    </script>
+</body>
+</html>
+                

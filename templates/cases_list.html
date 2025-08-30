@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Management - AFIS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            line-height: 1.6;
+        }
+
+        .header-bar {
+            background: #1d3557;
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9em;
+        }
+
+        .header-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gov-seal {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .seal-icon {
+            width: 24px;
+            height: 24px;
+            background: #ffd60a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #1d3557;
+            font-size: 12px;
+        }
+
+        .main-header {
+            background: white;
+            border-bottom: 3px solid #457b9d;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .main-header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-menu {
+            background: #457b9d;
+            padding: 0;
+        }
+
+        .nav-menu .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .nav-item {
+            flex: 1;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: #1d3557;
+        }
+
+        .main-container {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .page-header {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-title {
+            font-size: 2em;
+            color: #1d3557;
+            font-weight: 600;
+        }
+
+        .filter-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            align-items: end;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-group label {
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #495057;
+        }
+
+        .filter-control {
+            padding: 8px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .cases-panel {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .panel-header {
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .panel-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #1d3557;
+        }
+
+        .cases-count {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .cases-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cases-table th {
+            background: #f8f9fa;
+            padding: 15px 12px;
+            text-align: left;
+            border-bottom: 2px solid #dee2e6;
+            font-weight: 600;
+            color: #495057;
+            font-size: 0.9em;
+            position: sticky;
+            top: 0;
+        }
+
+        .cases-table td {
+            padding: 15px 12px;
+            border-bottom: 1px solid #dee2e6;
+            font-size: 0.9em;
+        }
+
+        .cases-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .case-id {
+            font-weight: 600;
+            color: #1d3557;
+        }
+
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-processing {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .match-indicator {
+            font-weight: 600;
+        }
+
+        .match-yes {
+            color: #28a745;
+        }
+
+        .match-no {
+            color: #dc3545;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            font-size: 0.85em;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+            margin-right: 5px;
+        }
+
+        .btn-primary {
+            background: #1d3557;
+            color: white;
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+        }
+
+        .empty-state h3 {
+            margin-bottom: 15px;
+            color: #495057;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            gap: 10px;
+        }
+
+        .page-link {
+            padding: 8px 12px;
+            border: 1px solid #dee2e6;
+            background: white;
+            color: #457b9d;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .page-link:hover {
+            background: #e9ecef;
+        }
+
+        .page-link.active {
+            background: #1d3557;
+            color: white;
+            border-color: #1d3557;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            margin-bottom: 20px;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        .footer {
+            background: #1d3557;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu .container {
+                flex-direction: column;
+            }
+
+            .nav-item {
+                flex: none;
+            }
+
+            .page-header {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .filter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cases-table {
+                font-size: 0.8em;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <div class="container">
+            <div class="gov-seal">
+                <div class="seal-icon">🛡</div>
+                <span>Official Government System</span>
+            </div>
+            <div>Case Management Portal</div>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="container">
+            <div>
+                <h1 style="font-size: 1.8em; color: #1d3557; font-weight: 600; margin-bottom: 5px;">Department of Forensic Sciences</h1>
+                <p style="font-size: 1.2em; color: #457b9d;">Case Management System</p>
+            </div>
+            <div style="text-align: right;">
+                <div style="font-weight: 600; color: #1d3557;">{{ session.full_name }}</div>
+                <div style="font-size: 0.9em; color: #6c757d;">{{ session.role|title }} • {{ session.badge_id }}</div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <div class="nav-item">
+                <a href="{{ url_for('dashboard') }}" class="nav-link">Dashboard</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('new_case') }}" class="nav-link">New Analysis</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('list_cases') }}" class="nav-link active">All Cases</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('profile') }}" class="nav-link">Profile</a>
+            </div>
+            {% if session.role == 'admin' %}
+            <div class="nav-item">
+                <a href="{{ url_for('admin_panel') }}" class="nav-link">Administration</a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="page-header">
+            <h2 class="page-title">Case Management</h2>
+            <a href="{{ url_for('new_case') }}" class="btn btn-primary">Start New Analysis</a>
+        </div>
+
+        <div class="filter-section">
+            <h3 style="margin-bottom: 15px; color: #1d3557;">Filter Cases</h3>
+            <div class="filter-grid">
+                <div class="filter-group">
+                    <label>Search Case ID</label>
+                    <input type="text" class="filter-control" id="caseFilter" placeholder="Enter case ID...">
+                </div>
+                <div class="filter-group">
+                    <label>Analysis Mode</label>
+                    <select class="filter-control" id="modeFilter">
+                        <option value="">All Modes</option>
+                        <option value="single">Single Comparison</option>
+                        <option value="database">Database Scan</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Match Status</label>
+                    <select class="filter-control" id="matchFilter">
+                        <option value="">All Cases</option>
+                        <option value="matches">Cases with Matches</option>
+                        <option value="no-matches">Cases without Matches</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <button class="btn btn-secondary" onclick="clearFilters()" style="padding: 8px 16px;">Clear Filters</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cases-panel">
+            <div class="panel-header">
+                <h3 class="panel-title">
+                    {% if session.role == 'admin' %}All System Cases{% else %}Your Cases{% endif %}
+                </h3>
+                <div class="cases-count">{{ cases|length }} cases found</div>
+            </div>
+            
+            <div class="table-container">
+                {% if cases %}
+                    <table class="cases-table" id="casesTable">
+                        <thead>
+                            <tr>
+                                <th>Case ID</th>
+                                <th>Examiner</th>
+                                <th>Mode</th>
+                                <th>Comparisons</th>
+                                <th>Matches Found</th>
+                                <th>Match Rate</th>
+                                <th>Date Created</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for case in cases %}
+                            <tr class="case-row" 
+                                data-case-id="{{ case.case_id|lower }}"
+                                data-mode="{{ case.analysis_mode }}"
+                                data-matches="{{ case.matches_found }}">
+                                <td>
+                                    <span class="case-id">{{ case.case_id }}</span>
+                                </td>
+                                <td>{{ case.operator_name or case.operator_id }}</td>
+                                <td>{{ case.analysis_mode|title }}</td>
+                                <td>{{ case.total_comparisons }}</td>
+                                <td>
+                                    <span class="match-indicator {{ 'match-yes' if case.matches_found > 0 else 'match-no' }}">
+                                        {{ case.matches_found }}
+                                    </span>
+                                </td>
+                                <td>{{ "%.1f%%"|format(case.match_rate) }}</td>
+                                <td>{{ case.created_at[:16] }}</td>
+                                <td>
+                                    <span class="status-badge status-{{ case.status }}">
+                                        {{ case.status|title }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <a href="{{ url_for('display_results', case_id=case.case_id) }}" 
+                                           class="btn btn-primary">View</a>
+                                        <a href="{{ url_for('download_comprehensive_pdf_report', case_id=case.case_id) }}" 
+                                           class="btn btn-success">PDF</a>
+                                        {% if session.role == 'admin' or case.operator_id == session.badge_id %}
+                                        <button class="btn btn-danger" 
+                                                onclick="confirmDelete('{{ case.case_id }}')">Delete</button>
+                                        {% endif %}
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <div class="empty-state">
+                        <h3>No Cases Found</h3>
+                        <p>{% if session.role == 'admin' %}No cases have been created in the system yet.{% else %}You haven't created any cases yet.{% endif %}</p>
+                        <a href="{{ url_for('new_case') }}" class="btn btn-primary" style="margin-top: 20px;">Create Your First Case</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>Department of Forensic Sciences - Case Management System</div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); max-width: 400px; width: 90%;">
+            <h3 style="color: #1d3557; margin-bottom: 15px;">Confirm Deletion</h3>
+            <p style="margin-bottom: 20px; color: #495057;">Are you sure you want to delete case <strong id="deleteCaseId"></strong>? This action cannot be undone.</p>
+            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                <button class="btn btn-secondary" onclick="closeDeleteModal()">Cancel</button>
+                <form id="deleteForm" method="POST" style="display: inline;">
+                    <button type="submit" class="btn btn-danger">Delete Case</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentDeleteCaseId = null;
+
+        function confirmDelete(caseId) {
+            currentDeleteCaseId = caseId;
+            document.getElementById('deleteCaseId').textContent = caseId;
+            document.getElementById('deleteForm').action = `/case/${caseId}/delete`;
+            document.getElementById('deleteModal').style.display = 'block';
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').style.display = 'none';
+            currentDeleteCaseId = null;
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('deleteModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeDeleteModal();
+            }
+        });
+
+        // Filter functionality
+        function filterCases() {
+            const caseFilter = document.getElementById('caseFilter').value.toLowerCase();
+            const modeFilter = document.getElementById('modeFilter').value;
+            const matchFilter = document.getElementById('matchFilter').value;
+            
+            const rows = document.querySelectorAll('.case-row');
+            let visibleCount = 0;
+            
+            rows.forEach(row => {
+                const caseId = row.dataset.caseId;
+                const mode = row.dataset.mode;
+                const matches = parseInt(row.dataset.matches);
+                
+                let show = true;
+                
+                // Case ID filter
+                if (caseFilter && !caseId.includes(caseFilter)) {
+                    show = false;
+                }
+                
+                // Mode filter
+                if (modeFilter && mode !== modeFilter) {
+                    show = false;
+                }
+                
+                // Match filter
+                if (matchFilter) {
+                    if (matchFilter === 'matches' && matches === 0) {
+                        show = false;
+                    } else if (matchFilter === 'no-matches' && matches > 0) {
+                        show = false;
+                    }
+                }
+                
+                row.style.display = show ? '' : 'none';
+                if (show) visibleCount++;
+            });
+            
+            // Update count
+            document.querySelector('.cases-count').textContent = `${visibleCount} cases found`;
+        }
+
+        function clearFilters() {
+            document.getElementById('caseFilter').value = '';
+            document.getElementById('modeFilter').value = '';
+            document.getElementById('matchFilter').value = '';
+            filterCases();
+        }
+
+        // Add event listeners for filters
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('caseFilter').addEventListener('input', filterCases);
+            document.getElementById('modeFilter').addEventListener('change', filterCases);
+            document.getElementById('matchFilter').addEventListener('change', filterCases);
+        });
+
+        // ESC key to close modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && currentDeleteCaseId) {
+                closeDeleteModal();
+            }
+        });
+    </script>
+</body>
+</html>

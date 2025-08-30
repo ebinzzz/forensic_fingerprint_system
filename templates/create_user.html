@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New User - AFIS System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            line-height: 1.6;
+        }
+
+        .header-bar {
+            background: #1d3557;
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9em;
+        }
+
+        .header-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gov-seal {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .seal-icon {
+            width: 24px;
+            height: 24px;
+            background: #ffd60a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #1d3557;
+            font-size: 12px;
+        }
+
+        .main-header {
+            background: white;
+            border-bottom: 3px solid #457b9d;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .main-header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .agency-info h1 {
+            font-size: 1.8em;
+            color: #1d3557;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .agency-info p {
+            font-size: 1.2em;
+            color: #457b9d;
+            font-weight: 400;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-info {
+            text-align: right;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: #1d3557;
+        }
+
+        .user-role {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        .nav-menu {
+            background: #457b9d;
+            padding: 0;
+        }
+
+        .nav-menu .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .nav-item {
+            flex: 1;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: #1d3557;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .welcome-section {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #457b9d;
+        }
+
+        .welcome-title {
+            font-size: 1.8em;
+            color: #1d3557;
+            margin-bottom: 10px;
+        }
+
+        .welcome-subtitle {
+            color: #6c757d;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9em;
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb a {
+            color: #457b9d;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .form-header {
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .form-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: #457b9d;
+        }
+
+        .form-header h2 {
+            font-size: 1.5em;
+            color: #1d3557;
+            margin-bottom: 8px;
+        }
+
+        .form-header p {
+            color: #6c757d;
+            font-size: 1em;
+        }
+
+        .form-body {
+            padding: 30px;
+        }
+
+        .security-notice {
+            background: #e3f2fd;
+            border: 1px solid #bbdefb;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .security-notice h4 {
+            color: #1976d2;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .security-notice p {
+            color: #0d47a1;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .form-row.single {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #495057;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group label.required::after {
+            content: '*';
+            color: #dc3545;
+            margin-left: 4px;
+        }
+
+        .form-control {
+            padding: 12px 15px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 0.95em;
+            transition: all 0.15s ease-in-out;
+            background: white;
+        }
+
+        .form-control:focus {
+            border-color: #457b9d;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(69, 123, 157, 0.25);
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 12px;
+            color: #6c757d;
+            font-size: 0.9em;
+            z-index: 2;
+        }
+
+        .input-group .form-control {
+            padding-left: 35px;
+        }
+
+        .form-help {
+            font-size: 0.8em;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+
+        .role-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .role-option {
+            position: relative;
+        }
+
+        .role-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .role-card {
+            display: block;
+            padding: 20px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            background: white;
+        }
+
+        .role-card:hover {
+            border-color: #457b9d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .role-option input:checked + .role-card {
+            border-color: #457b9d;
+            background: #f8fbff;
+            box-shadow: 0 0 0 0.2rem rgba(69, 123, 157, 0.25);
+        }
+
+        .role-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .role-title {
+            font-weight: 600;
+            color: #1d3557;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .role-description {
+            font-size: 0.9em;
+            color: #6c757d;
+            line-height: 1.4;
+        }
+
+        .password-strength {
+            margin-top: 8px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            display: none;
+        }
+
+        .password-strength.weak {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .password-strength.medium {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        .password-strength.strong {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 0.95em;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .btn-primary {
+            background: #1d3557;
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: #0f1c2e;
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading-content {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #457b9d;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-content h3 {
+            color: #1d3557;
+            margin-bottom: 10px;
+        }
+
+        .loading-content p {
+            color: #6c757d;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            margin-bottom: 20px;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        .alert-info {
+            color: #0c5460;
+            background-color: #d1ecf1;
+            border-color: #bee5eb;
+        }
+
+        .footer {
+            background: #1d3557;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+            font-size: 0.9em;
+        }
+
+        .form-control.is-valid {
+            border-color: #28a745;
+            box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.15);
+        }
+
+        .form-control.is-invalid {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .role-selection {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu .container {
+                flex-direction: column;
+            }
+
+            .nav-item {
+                flex: none;
+            }
+
+            .user-menu {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .form-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .form-actions .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <div class="container">
+            <div class="gov-seal">
+                <div class="seal-icon">🛡</div>
+                <span>Official Government System</span>
+            </div>
+            <div>Secure Access Portal</div>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="container">
+            <div class="agency-info">
+                <h1>Department of Forensic Sciences</h1>
+                <p>Automated Fingerprint Identification System (AFIS)</p>
+            </div>
+            <div class="user-menu">
+                <div class="user-info">
+                    <div class="user-name">{{ session.full_name }}</div>
+                    <div class="user-role">{{ session.role|title }} • {{ session.badge_id }}</div>
+                </div>
+                <a href="{{ url_for('logout') }}" class="btn btn-sm" style="background: #dc3545; color: white;">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <div class="nav-item">
+                <a href="{{ url_for('dashboard') }}" class="nav-link">Dashboard</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('new_case') }}" class="nav-link">New Analysis</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('list_cases') }}" class="nav-link">All Cases</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('profile') }}" class="nav-link">Profile</a>
+            </div>
+            {% if session.role == 'admin' %}
+            <div class="nav-item">
+                <a href="{{ url_for('admin_panel') }}" class="nav-link active">Administration</a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="welcome-section">
+            <h2 class="welcome-title">Create New User</h2>
+            <p class="welcome-subtitle">Add a new user account to the AFIS system with appropriate permissions</p>
+            
+            <div class="breadcrumb">
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <span>›</span>
+                <a href="{{ url_for('list_users') }}">Users</a>
+                <span>›</span>
+                <span>Create New</span>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <div class="form-header">
+                <div class="form-icon">👤</div>
+                <h2>Add New User</h2>
+                <p>Create a new system user account with appropriate permissions</p>
+            </div>
+
+            <div class="form-body">
+                <!-- Security Notice -->
+                <div class="security-notice">
+                    <h4>Security Guidelines</h4>
+                    <p>Ensure all user information is accurate and complete. Default passwords must be changed on first login. Only create accounts for authorized personnel with appropriate clearance levels.</p>
+                </div>
+
+                <form method="POST" action="{{ url_for('create_user') }}" id="createUserForm" novalidate>
+                    <!-- Personal Information -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="full_name" class="required">
+                                <span>👤</span> Full Name
+                            </label>
+                            <input type="text" class="form-control" id="full_name" name="full_name" 
+                                   required placeholder="Enter full legal name" autocomplete="name">
+                            <div class="form-help">As it appears on official identification</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="department">
+                                <span>🏢</span> Department
+                            </label>
+                            <select class="form-control" id="department" name="department">
+                                <option value="">Select Department</option>
+                                <option value="Forensic Sciences">Forensic Sciences</option>
+                                <option value="Criminal Investigation">Criminal Investigation</option>
+                                <option value="Crime Scene">Crime Scene Investigation</option>
+                                <option value="Laboratory">Laboratory Services</option>
+                                <option value="IT Support">IT Support</option>
+                                <option value="Administration">Administration</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Account Credentials -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="username" class="required">
+                                <span>🔑</span> Username
+                            </label>
+                            <div class="input-group">
+                                <span class="input-icon">@</span>
+                                <input type="text" class="form-control" id="username" name="username" 
+                                       required placeholder="Create unique username" autocomplete="username">
+                            </div>
+                            <div class="form-help">Must be unique, 3-20 characters, alphanumeric only</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="badge_id" class="required">
+                                <span>🏷️</span> Badge ID
+                            </label>
+                            <div class="input-group">
+                                <span class="input-icon">#</span>
+                                <input type="text" class="form-control" id="badge_id" name="badge_id" 
+                                       required placeholder="Official badge number">
+                            </div>
+                            <div class="form-help">Official employee badge or ID number</div>
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-row single">
+                        <div class="form-group">
+                            <label for="password" class="required">
+                                <span>🔐</span> Password
+                            </label>
+                            <div class="input-group">
+                                <span class="input-icon">🔒</span>
+                                <input type="password" class="form-control" id="password" name="password" 
+                                       required placeholder="Create secure password" autocomplete="new-password">
+                            </div>
+                            <div id="passwordStrength" class="password-strength"></div>
+                            <div class="form-help">Minimum 8 characters with uppercase, lowercase, number, and special character</div>
+                        </div>
+                    </div>
+
+                    <!-- Role Selection -->
+                    <div class="form-group">
+                        <label class="required">
+                            <span>⭐</span> User Role
+                        </label>
+                        <div class="role-selection">
+                            <div class="role-option">
+                                <input type="radio" id="role_admin" name="role" value="admin">
+                                <label for="role_admin" class="role-card">
+                                    <span class="role-icon">🔐</span>
+                                    <div class="role-title">Administrator</div>
+                                    <div class="role-description">Full system access, user management, system configuration</div>
+                                </label>
+                            </div>
+                            
+                            <div class="role-option">
+                                <input type="radio" id="role_examiner" name="role" value="examiner" checked>
+                                <label for="role_examiner" class="role-card">
+                                    <span class="role-icon">🔍</span>
+                                    <div class="role-title">Examiner</div>
+                                    <div class="role-description">Fingerprint analysis, case management, evidence review</div>
+                                </label>
+                            </div>
+                            
+                            <div class="role-option">
+                                <input type="radio" id="role_technician" name="role" value="technician">
+                                <label for="role_technician" class="role-card">
+                                    <span class="role-icon">⚙️</span>
+                                    <div class="role-title">Technician</div>
+                                    <div class="role-description">Data entry, system maintenance, technical support</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <a href="{{ url_for('list_users') }}" class="btn btn-secondary">
+                            <span>❌</span> Cancel
+                        </a>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <span>✅</span> Create User
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <h3>Creating User Account...</h3>
+            <p>Please wait while we process your request.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>Department of Forensic Sciences - AFIS User Management</div>
+    </div>
+
+    <script>
+        // Form validation
+        const form = document.getElementById('createUserForm');
+        const submitBtn = document.getElementById('submitBtn');
+        
+        // Real-time validation
+        const requiredFields = ['full_name', 'username', 'badge_id', 'password'];
+        
+        function validateField(field) {
+            const value = field.value.trim();
+            const fieldName = field.name;
+            
+            // Remove existing validation classes
+            field.classList.remove('is-valid', 'is-invalid');
+            
+            // Field-specific validation
+            switch(fieldName) {
+                case 'username':
+                    if (value.length < 3 || value.length > 20) {
+                        field.classList.add('is-invalid');
+                        return false;
+                    } else if (!/^[a-zA-Z0-9]+$/.test(value)) {
+                        field.classList.add('is-invalid');
+                        return false;
+                    }
+                    break;
+                    
+                case 'password':
+                    return validatePassword(value);
+                    
+                case 'full_name':
+                    if (value.length < 2) {
+                        field.classList.add('is-invalid');
+                        return false;
+                    }
+                    break;
+                    
+                case 'badge_id':
+                    if (value.length < 1) {
+                        field.classList.add('is-invalid');
+                        return false;
+                    }
+                    break;
+            }
+            
+            if (value) {
+                field.classList.add('is-valid');
+                return true;
+            } else {
+                field.classList.add('is-invalid');
+                return false;
+            }
+        }
+
+        // Password strength validation
+        function validatePassword(password) {
+            const strengthElement = document.getElementById('passwordStrength');
+            const passwordField = document.getElementById('password');
+            
+            if (!password) {
+                strengthElement.style.display = 'none';
+                passwordField.classList.add('is-invalid');
+                return false;
+            }
+            
+            let score = 0;
+            let feedback = [];
+            
+            // Length check
+            if (password.length >= 8) {
+                score += 1;
+            } else {
+                feedback.push('At least 8 characters');
+            }
+            
+            // Uppercase check
+            if (/[A-Z]/.test(password)) {
+                score += 1;
+            } else {
+                feedback.push('One uppercase letter');
+            }
+            
+            // Lowercase check
+            if (/[a-z]/.test(password)) {
+                score += 1;
+            } else {
+                feedback.push('One lowercase letter');
+            }
+            
+            // Number check
+            if (/\d/.test(password)) {
+                score += 1;
+            } else {
+                feedback.push('One number');
+            }
+            
+            // Special character check
+            if (/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) {
+                score += 1;
+            } else {
+                feedback.push('One special character');
+            }
+            
+            // Update strength indicator
+            strengthElement.style.display = 'block';
+            
+            if (score <= 2) {
+                strengthElement.className = 'password-strength weak';
+                strengthElement.innerHTML = `<strong>Weak Password</strong><br>Missing: ${feedback.join(', ')}`;
+                passwordField.classList.add('is-invalid');
+                return false;
+            } else if (score <= 4) {
+                strengthElement.className = 'password-strength medium';
+                strengthElement.innerHTML = `<strong>Medium Password</strong><br>Consider adding: ${feedback.join(', ')}`;
+                passwordField.classList.add('is-valid');
+                return true;
+            } else {
+                strengthElement.className = 'password-strength strong';
+                strengthElement.innerHTML = '<strong>Strong Password</strong><br>✅ Meets all security requirements';
+                passwordField.classList.add('is-valid');
+                return true;
+            }
+        }
+
+        // Add validation listeners
+        requiredFields.forEach(fieldName => {
+            const field = document.getElementById(fieldName);
+            if (field) {
+                field.addEventListener('blur', () => validateField(field));
+                field.addEventListener('input', () => {
+                    if (fieldName === 'password') {
+                        validatePassword(field.value);
+                    }
+                });
+            }
+        });
+
+        // Username availability check (simulated)
+        document.getElementById('username').addEventListener('blur', async function() {
+            const username = this.value.trim();
+            if (username.length >= 3) {
+                // Simulate API call
+                setTimeout(() => {
+                    // This would be replaced with actual API call
+                    console.log(`Checking availability for username: ${username}`);
+                }, 500);
+            }
+        });
+
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate all fields
+            let isValid = true;
+            requiredFields.forEach(fieldName => {
+                const field = document.getElementById(fieldName);
+                if (field && !validateField(field)) {
+                    isValid = false;
+                }
+            });
+            
+            // Check if role is selected
+            const roleSelected = document.querySelector('input[name="role"]:checked');
+            if (!roleSelected) {
+                isValid = false;
+                alert('Please select a user role.');
+            }
+            
+            if (isValid) {
+                // Show loading overlay
+                document.getElementById('loadingOverlay').style.display = 'flex';
+                
+                // Disable submit button
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span>⏳</span> Creating...';
+                
+                // Submit form
+                this.submit();
+            } else {
+                alert('Please correct the errors in the form before submitting.');
+            }
+        });
+
+        // Generate username suggestion from full name
+        document.getElementById('full_name').addEventListener('blur', function() {
+            const fullName = this.value.trim();
+            const usernameField = document.getElementById('username');
+            
+            if (fullName && !usernameField.value) {
+                const names = fullName.toLowerCase().split(' ');
+                let suggestion = '';
+                
+                if (names.length > 1) {
+                    suggestion = names[0] + '.' + names[names.length - 1];
+                } else {
+                    suggestion = names[0];
+                }
+                
+                // Remove non-alphanumeric characters
+                suggestion = suggestion.replace(/[^a-z0-9]/g, '');
+                
+                // Limit to 20 characters
+                if (suggestion.length > 20) {
+                    suggestion = suggestion.substring(0, 20);
+                }
+                
+                usernameField.value = suggestion;
+                usernameField.focus();
+            }
+        });
+
+        // Auto-format badge ID
+        document.getElementById('badge_id').addEventListener('input', function() {
+            let value = this.value.replace(/[^a-zA-Z0-9]/g, '');
+            this.value = value.toUpperCase();
+        });
+
+        // Department selection enhancement
+        document.getElementById('department').addEventListener('change', function() {
+            const selectedDept = this.value;
+            console.log(`Department selected: ${selectedDept}`);
+        });
+
+        // Initialize form
+        document.addEventListener('DOMContentLoaded', function() {
+            // Focus first field
+            document.getElementById('full_name').focus();
+            
+            console.log('Create user form loaded successfully');
+        });
+    </script>
+</body>
+</html>

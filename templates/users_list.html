@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - AFIS System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            line-height: 1.6;
+        }
+
+        .header-bar {
+            background: #1d3557;
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9em;
+        }
+
+        .header-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gov-seal {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .seal-icon {
+            width: 24px;
+            height: 24px;
+            background: #ffd60a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #1d3557;
+            font-size: 12px;
+        }
+
+        .main-header {
+            background: white;
+            border-bottom: 3px solid #457b9d;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .main-header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .agency-info h1 {
+            font-size: 1.8em;
+            color: #1d3557;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .agency-info p {
+            font-size: 1.2em;
+            color: #457b9d;
+            font-weight: 400;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-info {
+            text-align: right;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: #1d3557;
+        }
+
+        .user-role {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        .nav-menu {
+            background: #457b9d;
+            padding: 0;
+        }
+
+        .nav-menu .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .nav-item {
+            flex: 1;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: #1d3557;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .welcome-section {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #457b9d;
+        }
+
+        .welcome-title {
+            font-size: 1.8em;
+            color: #1d3557;
+            margin-bottom: 10px;
+        }
+
+        .welcome-subtitle {
+            color: #6c757d;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .page-title h2 {
+            font-size: 1.5em;
+            color: #1d3557;
+            margin-bottom: 5px;
+        }
+
+        .user-count {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-top: 4px solid #457b9d;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .stat-card.stat-admin {
+            border-top-color: #dc3545;
+        }
+
+        .stat-card.stat-examiner {
+            border-top-color: #28a745;
+        }
+
+        .stat-card.stat-active {
+            border-top-color: #17a2b8;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #1d3557;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #6c757d;
+            font-weight: 500;
+            font-size: 0.95em;
+        }
+
+        .search-filters {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .search-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr auto;
+            gap: 20px;
+            align-items: end;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #495057;
+        }
+
+        .form-control {
+            padding: 10px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 0.95em;
+            transition: border-color 0.15s ease-in-out;
+        }
+
+        .form-control:focus {
+            border-color: #457b9d;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(69, 123, 157, 0.25);
+        }
+
+        .users-table {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .table-header {
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .table-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #1d3557;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th {
+            background: #f8f9fa;
+            padding: 15px 12px;
+            text-align: left;
+            border-bottom: 2px solid #dee2e6;
+            font-weight: 600;
+            color: #495057;
+            font-size: 0.9em;
+        }
+
+        .table td {
+            padding: 15px 12px;
+            border-bottom: 1px solid #dee2e6;
+            font-size: 0.9em;
+            vertical-align: middle;
+        }
+
+        .table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: #457b9d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .user-details h4 {
+            font-size: 1em;
+            color: #1d3557;
+            margin-bottom: 2px;
+        }
+
+        .user-details p {
+            font-size: 0.85em;
+            color: #6c757d;
+            margin: 0;
+        }
+
+        .role-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .role-admin {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .role-examiner {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .role-technician {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-inactive {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .action-buttons-cell {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 12px;
+            font-size: 0.85em;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .btn-primary {
+            background: #1d3557;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0f1c2e;
+            transform: translateY(-1px);
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+        }
+
+        .btn-warning {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .btn-warning:hover {
+            background: #e0a800;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .btn-sm {
+            padding: 6px 10px;
+            font-size: 0.8em;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 40px;
+            color: #6c757d;
+        }
+
+        .empty-state-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .empty-state h3 {
+            margin-bottom: 10px;
+            color: #495057;
+            font-size: 1.3em;
+        }
+
+        .empty-state p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .text-muted {
+            color: #6c757d;
+        }
+
+        .footer {
+            background: #1d3557;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+            font-size: 0.9em;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            margin-bottom: 20px;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        .alert-info {
+            color: #0c5460;
+            background-color: #d1ecf1;
+            border-color: #bee5eb;
+        }
+
+        @media (max-width: 768px) {
+            .search-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-menu .container {
+                flex-direction: column;
+            }
+
+            .nav-item {
+                flex: none;
+            }
+
+            .user-menu {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .quick-actions {
+                flex-direction: column;
+            }
+
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .action-buttons {
+                display: flex;
+                gap: 10px;
+                width: 100%;
+            }
+
+            .action-buttons .btn {
+                flex: 1;
+                text-align: center;
+            }
+
+            .action-buttons-cell {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .table th, .table td {
+                padding: 10px 8px;
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <div class="container">
+            <div class="gov-seal">
+                <div class="seal-icon">🛡</div>
+                <span>Official Government System</span>
+            </div>
+            <div>Secure Access Portal</div>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="container">
+            <div class="agency-info">
+                <h1>Department of Forensic Sciences</h1>
+                <p>Automated Fingerprint Identification System (AFIS)</p>
+            </div>
+            <div class="user-menu">
+                <div class="user-info">
+                    <div class="user-name">{{ session.full_name }}</div>
+                    <div class="user-role">{{ session.role|title }} • {{ session.badge_id }}</div>
+                </div>
+                <a href="{{ url_for('logout') }}" class="btn btn-sm" style="background: #dc3545; color: white;">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <div class="nav-item">
+                <a href="{{ url_for('dashboard') }}" class="nav-link">Dashboard</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('new_case') }}" class="nav-link">New Analysis</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('list_cases') }}" class="nav-link">All Cases</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('profile') }}" class="nav-link">Profile</a>
+            </div>
+            {% if session.role == 'admin' %}
+            <div class="nav-item">
+                <a href="{{ url_for('admin_panel') }}" class="nav-link active">Administration</a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="welcome-section">
+            <h2 class="welcome-title">User Management</h2>
+            <p class="welcome-subtitle">Manage system users, roles, and access permissions</p>
+            
+            <div class="page-header">
+                <div class="page-title">
+                    <h2>System Users</h2>
+                    <div class="user-count">{{ users|length }} Total Users</div>
+                </div>
+                <div class="action-buttons">
+                    <a href="{{ url_for('create_user') }}" class="btn btn-success">
+                        <span>➕</span> Add New User
+                    </a>
+                    <button class="btn btn-primary" onclick="exportUsers()">
+                        <span>📊</span> Export
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">{{ users|length }}</div>
+                <div class="stat-label">Total Users</div>
+            </div>
+            <div class="stat-card stat-admin">
+                <div class="stat-number">{{ users|selectattr('role', 'equalto', 'admin')|list|length }}</div>
+                <div class="stat-label">Administrators</div>
+            </div>
+            <div class="stat-card stat-examiner">
+                <div class="stat-number">{{ users|selectattr('role', 'equalto', 'examiner')|list|length }}</div>
+                <div class="stat-label">Examiners</div>
+            </div>
+            <div class="stat-card stat-active">
+                <div class="stat-number">{{ users|selectattr('is_active', 'equalto', 1)|list|length }}</div>
+                <div class="stat-label">Active Users</div>
+            </div>
+        </div>
+
+        <!-- Search and Filters -->
+        <div class="search-filters">
+            <div class="search-row">
+                <div class="form-group">
+                    <label for="searchUser">Search Users</label>
+                    <input type="text" class="form-control" id="searchUser" placeholder="Search by name, username, or badge ID...">
+                </div>
+                <div class="form-group">
+                    <label for="filterRole">Filter by Role</label>
+                    <select class="form-control" id="filterRole">
+                        <option value="">All Roles</option>
+                        <option value="admin">Administrator</option>
+                        <option value="examiner">Examiner</option>
+                        <option value="technician">Technician</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="filterStatus">Filter by Status</label>
+                    <select class="form-control" id="filterStatus">
+                        <option value="">All Status</option>
+                        <option value="1">Active</option>
+                        <option value="0">Inactive</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" onclick="clearFilters()">Clear Filters</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Users Table -->
+        <div class="users-table">
+            <div class="table-header">
+                <div class="table-title">
+                    <span>📋</span> User Directory
+                </div>
+                <div style="font-size: 0.9rem; opacity: 0.9;" id="lastUpdated">
+                    Last updated: <span id="updateTime"></span>
+                </div>
+            </div>
+            
+            {% if users %}
+                <div class="table-responsive">
+                    <table class="table" id="usersTable">
+                        <thead>
+                            <tr>
+                                <th>User Information</th>
+                                <th>Badge ID</th>
+                                <th>Department</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Cases</th>
+                                <th>Last Login</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
+                                <tr data-role="{{ user.role }}" data-status="{{ user.is_active }}">
+                                    <td>
+                                        <div class="user-info">
+                                            <div class="user-avatar">
+                                                {{ user.full_name.split()[0][0] }}{{ user.full_name.split()[-1][0] if user.full_name.split()|length > 1 else '' }}
+                                            </div>
+                                            <div class="user-details">
+                                                <h4>{{ user.full_name }}</h4>
+                                                <p>@{{ user.username }}</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <strong>{{ user.badge_id }}</strong>
+                                    </td>
+                                    <td>
+                                        <span class="text-muted">{{ user.department or 'Not specified' }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="role-badge role-{{ user.role }}">
+                                            {{ user.role.title() }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge status-{{ 'active' if user.is_active else 'inactive' }}">
+                                            {{ 'Active' if user.is_active else 'Inactive' }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <strong>{{ user.total_cases or 0 }}</strong>
+                                        <small class="text-muted"> cases</small>
+                                    </td>
+                                    <td>
+                                        {% if user.last_login %}
+                                            {% if user.last_login is string %}
+                                                {{ user.last_login }}
+                                            {% else %}
+                                                {{ user.last_login.strftime('%m/%d/%Y') }}<br>
+                                                <small class="text-muted">{{ user.last_login.strftime('%I:%M %p') }}</small>
+                                            {% endif %}
+                                        {% else %}
+                                            <span class="text-muted">Never</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <div class="action-buttons-cell">
+                                            <a href="#" class="btn btn-primary btn-sm" onclick="viewUser({{ user.id }})">
+                                                <span>👁️</span> View
+                                            </a>
+                                            <a href="#" class="btn btn-warning btn-sm" onclick="editUser({{ user.id }})">
+                                                <span>✏️</span> Edit
+                                            </a>
+                                            {% if user.is_active %}
+                                                <button class="btn btn-danger btn-sm" onclick="toggleUserStatus({{ user.id }}, false)">
+                                                    <span>🔒</span> Deactivate
+                                                </button>
+                                            {% else %}
+                                                <button class="btn btn-success btn-sm" onclick="toggleUserStatus({{ user.id }}, true)">
+                                                    <span>🔓</span> Activate
+                                                </button>
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="empty-state">
+                    <div class="empty-state-icon">👥</div>
+                    <h3>No users found</h3>
+                    <p>Get started by creating your first user account.</p>
+                    <a href="{{ url_for('create_user') }}" class="btn btn-success" style="margin-top: 20px;">
+                        <span>➕</span> Create First User
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>Department of Forensic Sciences - AFIS User Management</div>
+    </div>
+
+    <script>
+        // Initialize update time
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('updateTime').textContent = 
+                new Date().toLocaleDateString('en-US', { 
+                    month: 'short', 
+                    day: '2-digit', 
+                    year: 'numeric', 
+                    hour: '2-digit', 
+                    minute: '2-digit' 
+                });
+        });
+
+        // Search functionality
+        document.getElementById('searchUser').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#usersTable tbody tr');
+            
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchTerm) ? '' : 'none';
+            });
+            
+            updateStats();
+        });
+
+        // Filter by role
+        document.getElementById('filterRole').addEventListener('change', function() {
+            const role = this.value;
+            const rows = document.querySelectorAll('#usersTable tbody tr');
+            
+            rows.forEach(row => {
+                if (!role || row.dataset.role === role) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+            
+            updateStats();
+        });
+
+        // Filter by status
+        document.getElementById('filterStatus').addEventListener('change', function() {
+            const status = this.value;
+            const rows = document.querySelectorAll('#usersTable tbody tr');
+            
+            rows.forEach(row => {
+                if (!status || row.dataset.status === status) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+            
+            updateStats();
+        });
+
+        // Clear all filters
+        function clearFilters() {
+            document.getElementById('searchUser').value = '';
+            document.getElementById('filterRole').value = '';
+            document.getElementById('filterStatus').value = '';
+            
+            const rows = document.querySelectorAll('#usersTable tbody tr');
+            rows.forEach(row => row.style.display = '');
+            
+            updateStats();
+        }
+
+        // Update statistics based on visible rows
+        function updateStats() {
+            const visibleRows = Array.from(document.querySelectorAll('#usersTable tbody tr')).filter(row => row.style.display !== 'none');
+            const totalVisible = visibleRows.length;
+            
+            console.log(`Showing ${totalVisible} users`);
+        }
+
+        // User actions
+        function viewUser(userId) {
+            window.location.href = `/users/${userId}`;
+        }
+
+        function editUser(userId) {
+            window.location.href = `/users/${userId}/edit`;
+        }
+
+        function toggleUserStatus(userId, activate) {
+            const action = activate ? 'activate' : 'deactivate';
+            const message = activate ? 'activate this user' : 'deactivate this user';
+            
+            if (confirm(`Are you sure you want to ${message}?`)) {
+                fetch(`/users/${userId}/${action}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ activate: activate })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert('Error: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again.');
+                });
+            }
+        }
+
+        function exportUsers() {
+            const visibleRows = Array.from(document.querySelectorAll('#usersTable tbody tr')).filter(row => row.style.display !== 'none');
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "Full Name,Username,Badge ID,Department,Role,Status,Cases,Last Login\n";
+            
+            visibleRows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const fullName = cells[0].querySelector('h4').textContent;
+                const username = cells[0].querySelector('p').textContent.replace('@', '');
+                const badgeId = cells[1].textContent.trim();
+                const department = cells[2].textContent.trim();
+                const role = cells[3].textContent.trim();
+                const status = cells[4].textContent.trim();
+                const cases = cells[5].textContent.trim().split(' ')[0];
+                const lastLogin = cells[6].textContent.trim().replace('\n', ' ');
+                
+                csvContent += `"${fullName}","${username}","${badgeId}","${department}","${role}","${status}","${cases}","${lastLogin}"\n`;
+            });
+
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `users_export_${new Date().toISOString().split('T')[0]}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Initialize tooltips or other UI enhancements
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('User management page loaded successfully');
+        });
+    </script>
+</body>
+</html>

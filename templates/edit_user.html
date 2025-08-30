@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User - AFIS System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            line-height: 1.6;
+        }
+
+        .header-bar {
+            background: #1d3557;
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9em;
+        }
+
+        .header-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gov-seal {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .seal-icon {
+            width: 24px;
+            height: 24px;
+            background: #ffd60a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #1d3557;
+            font-size: 12px;
+        }
+
+        .main-header {
+            background: white;
+            border-bottom: 3px solid #457b9d;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .main-header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .agency-info h1 {
+            font-size: 1.8em;
+            color: #1d3557;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .agency-info p {
+            font-size: 1.2em;
+            color: #457b9d;
+            font-weight: 400;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-info {
+            text-align: right;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: #1d3557;
+        }
+
+        .user-role {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        .nav-menu {
+            background: #457b9d;
+            padding: 0;
+        }
+
+        .nav-menu .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .nav-item {
+            flex: 1;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: #1d3557;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .welcome-section {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #457b9d;
+        }
+
+        .welcome-title {
+            font-size: 1.8em;
+            color: #1d3557;
+            margin-bottom: 10px;
+        }
+
+        .welcome-subtitle {
+            color: #6c757d;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        .breadcrumb a {
+            color: #457b9d;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .form-header {
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .form-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            color: #457b9d;
+        }
+
+        .form-header h2 {
+            font-size: 1.5em;
+            color: #1d3557;
+            margin-bottom: 8px;
+        }
+
+        .form-header p {
+            color: #6c757d;
+            font-size: 1em;
+        }
+
+        .form-body {
+            padding: 30px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .form-row.single {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #495057;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group label.required::after {
+            content: '*';
+            color: #dc3545;
+            margin-left: 4px;
+        }
+
+        .form-control {
+            padding: 12px 15px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 0.95em;
+            transition: all 0.15s ease-in-out;
+            background: white;
+        }
+
+        .form-control:focus {
+            border-color: #457b9d;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(69, 123, 157, 0.25);
+        }
+
+        .form-control:disabled {
+            background-color: #e9ecef;
+            opacity: 1;
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 12px;
+            color: #6c757d;
+            font-size: 0.9em;
+            z-index: 2;
+        }
+
+        .input-group .form-control {
+            padding-left: 35px;
+        }
+
+        .form-help {
+            font-size: 0.8em;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+
+        .role-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .role-option {
+            position: relative;
+        }
+
+        .role-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .role-card {
+            display: block;
+            padding: 20px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            background: white;
+        }
+
+        .role-card:hover {
+            border-color: #457b9d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .role-option input:checked + .role-card {
+            border-color: #457b9d;
+            background: #f8fbff;
+            box-shadow: 0 0 0 0.2rem rgba(69, 123, 157, 0.25);
+        }
+
+        .role-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .role-title {
+            font-weight: 600;
+            color: #1d3557;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .role-description {
+            font-size: 0.9em;
+            color: #6c757d;
+            line-height: 1.4;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 0.95em;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .btn-primary {
+            background: #1d3557;
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: #0f1c2e;
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            margin-bottom: 20px;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        .alert-warning {
+            color: #856404;
+            background-color: #fff3cd;
+            border-color: #ffeaa7;
+        }
+
+        .footer {
+            background: #1d3557;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+            font-size: 0.9em;
+        }
+
+        .form-control.is-valid {
+            border-color: #28a745;
+            box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.15);
+        }
+
+        .form-control.is-invalid {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.15);
+        }
+
+        .password-section {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .password-section h4 {
+            color: #1d3557;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .password-note {
+            color: #6c757d;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .password-toggle {
+            margin-bottom: 15px;
+        }
+
+        .password-toggle input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        .password-fields {
+            display: none;
+        }
+
+        .password-fields.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .role-selection {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu .container {
+                flex-direction: column;
+            }
+
+            .nav-item {
+                flex: none;
+            }
+
+            .user-menu {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .form-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .form-actions .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <div class="container">
+            <div class="gov-seal">
+                <div class="seal-icon">🛡</div>
+                <span>Official Government System</span>
+            </div>
+            <div>Secure Access Portal</div>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="container">
+            <div class="agency-info">
+                <h1>Department of Forensic Sciences</h1>
+                <p>Automated Fingerprint Identification System (AFIS)</p>
+            </div>
+            <div class="user-menu">
+                <div class="user-info">
+                    <div class="user-name">{{ session.full_name }}</div>
+                    <div class="user-role">{{ session.role|title }} • {{ session.badge_id }}</div>
+                </div>
+                <a href="{{ url_for('logout') }}" class="btn btn-sm" style="background: #dc3545; color: white; padding: 6px 12px; font-size: 0.85em;">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <div class="nav-item">
+                <a href="{{ url_for('dashboard') }}" class="nav-link">Dashboard</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('new_case') }}" class="nav-link">New Analysis</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('list_cases') }}" class="nav-link">All Cases</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('profile') }}" class="nav-link">Profile</a>
+            </div>
+            {% if session.role == 'admin' %}
+            <div class="nav-item">
+                <a href="{{ url_for('admin_panel') }}" class="nav-link active">Administration</a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="welcome-section">
+            <h2 class="welcome-title">Edit User</h2>
+            <p class="welcome-subtitle">Modify user account details and permissions</p>
+            
+            <div class="breadcrumb">
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <span>›</span>
+                <a href="{{ url_for('list_users') }}">Users</a>
+                <span>›</span>
+                <a href="{{ url_for('view_user', user_id=user.id) }}">{{ user.full_name }}</a>
+                <span>›</span>
+                <span>Edit</span>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <div class="form-header">
+                <div class="form-icon">✏️</div>
+                <h2>Edit User: {{ user.full_name }}</h2>
+                <p>Update user account information and system permissions</p>
+            </div>
+
+            <div class="form-body">
+                <form method="POST" action="{{ url_for('edit_user', user_id=user.id) }}" id="editUserForm" novalidate>
+                    <!-- Personal Information -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="full_name" class="required">
+                                <span>👤</span> Full Name
+                            </label>
+                            <input type="text" class="form-control" id="full_name" name="full_name" 
+                                   value="{{ user.full_name }}" required autocomplete="name">
+                            <div class="form-help">As it appears on official identification</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="department">
+                                <span>🏢</span> Department
+                            </label>
+                            <select class="form-control" id="department" name="department">
+                                <option value="">Select Department</option>
+                                <option value="Forensic Sciences" {{ 'selected' if user.department == 'Forensic Sciences' else '' }}>Forensic Sciences</option>
+                                <option value="Criminal Investigation" {{ 'selected' if user.department == 'Criminal Investigation' else '' }}>Criminal Investigation</option>
+                                <option value="Crime Scene" {{ 'selected' if user.department == 'Crime Scene' else '' }}>Crime Scene Investigation</option>
+                                <option value="Laboratory" {{ 'selected' if user.department == 'Laboratory' else '' }}>Laboratory Services</option>
+                                <option value="IT Support" {{ 'selected' if user.department == 'IT Support' else '' }}>IT Support</option>
+                                <option value="Administration" {{ 'selected' if user.department == 'Administration' else '' }}>Administration</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Account Credentials -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="username" class="required">
+                                <span>🔑</span> Username
+                            </label>
+                            <div class="input-group">
+                                <span class="input-icon">@</span>
+                                <input type="text" class="form-control" id="username" name="username" 
+                                       value="{{ user.username }}" required autocomplete="username">
+                            </div>
+                            <div class="form-help">Must be unique, 3-20 characters, alphanumeric only</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="badge_id" class="required">
+                                <span>🏷️</span> Badge ID
+                            </label>
+                            <div class="input-group">
+                                <span class="input-icon">#</span>
+                                <input type="text" class="form-control" id="badge_id" name="badge_id" 
+                                       value="{{ user.badge_id }}" required>
+                            </div>
+                            <div class="form-help">Official employee badge or ID number</div>
+                        </div>
+                    </div>
+
+                    <!-- Password Section -->
+                    <div class="password-section">
+                        <h4>🔐 Password Management</h4>
+                        <p class="password-note">Leave password fields empty to keep current password unchanged.</p>
+                        
+                        <div class="password-toggle">
+                            <label>
+                                <input type="checkbox" id="changePassword"> Change Password
+                            </label>
+                        </div>
+
+                        <div class="password-fields" id="passwordFields">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="new_password">
+                                        <span>🔐</span> New Password
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-icon">🔒</span>
+                                        <input type="password" class="form-control" id="new_password" name="new_password" 
+                                               placeholder="Enter new password" autocomplete="new-password">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="confirm_password">
+                                        <span>🔐</span> Confirm Password
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-icon">🔒</span>
+                                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" 
+                                               placeholder="Confirm new password" autocomplete="new-password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="passwordMatch" class="form-help" style="display: none;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Role Selection -->
+                    <div class="form-group">
+                        <label class="required">
+                            <span>⭐</span> User Role
+                        </label>
+                        <div class="role-selection">
+                            <div class="role-option">
+                                <input type="radio" id="role_admin" name="role" value="admin" {{ 'checked' if user.role == 'admin' else '' }}>
+                                <label for="role_admin" class="role-card">
+                                    <span class="role-icon">🔐</span>
+                                    <div class="role-title">Administrator</div>
+                                    <div class="role-description">Full system access, user management, system configuration</div>
+                                </label>
+                            </div>
+                            
+                            <div class="role-option">
+                                <input type="radio" id="role_examiner" name="role" value="examiner" {{ 'checked' if user.role == 'examiner' else '' }}>
+                                <label for="role_examiner" class="role-card">
+                                    <span class="role-icon">🔍</span>
+                                    <div class="role-title">Examiner</div>
+                                    <div class="role-description">Fingerprint analysis, case management, evidence review</div>
+                                </label>
+                            </div>
+                            
+                            <div class="role-option">
+                                <input type="radio" id="role_technician" name="role" value="technician" {{ 'checked' if user.role == 'technician' else '' }}>
+                                <label for="role_technician" class="role-card">
+                                    <span class="role-icon">⚙️</span>
+                                    <div class="role-title">Technician</div>
+                                    <div class="role-description">Data entry, system maintenance, technical support</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Account Status -->
+                    <div class="form-row single">
+                        <div class="form-group">
+                            <label>
+                                <span>📅</span> Account Status
+                            </label>
+                            <div style="margin-top: 10px;">
+                                <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                    <input type="checkbox" name="is_active" value="1" {{ 'checked' if user.is_active else '' }}>
+                                    <span>Account is active and can access the system</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <div>
+                            <a href="{{ url_for('view_user', user_id=user.id) }}" class="btn btn-secondary">
+                                ❌ Cancel
+                            </a>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <button type="button" class="btn btn-danger" onclick="deleteUser({{ user.id }})">
+                                🗑️ Delete User
+                            </button>
+                            <button type="submit" class="btn btn-primary" id="submitBtn">
+                                💾 Save Changes
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>Department of Forensic Sciences - AFIS User Management</div>
+    </div>
+
+    <script>
+        // Password change toggle
+        document.getElementById('changePassword').addEventListener('change', function() {
+            const passwordFields = document.getElementById('passwordFields');
+            const newPasswordField = document.getElementById('new_password');
+            const confirmPasswordField = document.getElementById('confirm_password');
+            
+            if (this.checked) {
+                passwordFields.classList.add('show');
+                newPasswordField.required = true;
+                confirmPasswordField.required = true;
+            } else {
+                passwordFields.classList.remove('show');
+                newPasswordField.required = false;
+                confirmPasswordField.required = false;
+                newPasswordField.value = '';
+                confirmPasswordField.value = '';
+            }
+        });
+
+        // Password confirmation validation
+        function validatePasswordMatch() {
+            const newPassword = document.getElementById('new_password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            const matchElement = document.getElementById('passwordMatch');
+            
+            if (newPassword && confirmPassword) {
+                if (newPassword === confirmPassword) {
+                    matchElement.style.display = 'block';
+                    matchElement.style.color = '#28a745';
+                    matchElement.textContent = '✅ Passwords match';
+                    return true;
+                } else {
+                    matchElement.style.display = 'block';
+                    matchElement.style.color = '#dc3545';
+                    matchElement.textContent = '❌ Passwords do not match';
+                    return false;
+                }
+            } else {
+                matchElement.style.display = 'none';
+                return true; // Valid if both empty (no change)
+            }
+        }
+
+        document.getElementById('new_password').addEventListener('input', validatePasswordMatch);
+        document.getElementById('confirm_password').addEventListener('input', validatePasswordMatch);
+
+        // Form validation
+        function validateField(field) {
+            const value = field.value.trim();
+            const fieldName = field.name;
+            
+            field.classList.remove('is-valid', 'is-invalid');
+            
+            switch(fieldName) {
+                case 'username':
+                    if (value.length < 3 || value.length > 20) {
+                        field.classList.add('is-invalid');
+                        return false;
+                    } else if (!/^[a-zA-Z0-9]+$/.test(value)) {
+                        field.classList.add('is-invalid');
+                        return false;
+                    }
+                    break;
+                    
+                case 'full_name':
+                    if (value.length < 2) {
+                        field.classList.add('is-invalid');
+                        return false;
+                    }
+                    break;
+                    
+                case 'badge_id':
+                    if (value.length < 1) {
+                        field.classList.add('is-invalid');
+                        return false;
+                    }
+                    break;
+            }
+            
+            if (value) {
+                field.classList.add('is-valid');
+                return true;
+            } else {
+                field.classList.add('is-invalid');
+                return false;
+            }
+        }
+
+        // Form submission
+        document.getElementById('editUserForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            const requiredFields = ['full_name', 'username', 'badge_id'];
+            
+            // Validate required fields
+            requiredFields.forEach(fieldName => {
+                const field = document.getElementById(fieldName);
+                if (field && !validateField(field)) {
+                    isValid = false;
+                }
+            });
+
+            // Validate password match if changing password
+            if (document.getElementById('changePassword').checked) {
+                if (!validatePasswordMatch()) {
+                    isValid = false;
+                }
+            }
+
+            // Check if role is selected
+            const roleSelected = document.querySelector('input[name="role"]:checked');
+            if (!roleSelected) {
+                isValid = false;
+                alert('Please select a user role.');
+            }
+            
+            if (isValid) {
+                // Disable submit button
+                const submitBtn = document.getElementById('submitBtn');
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '⏳ Saving...';
+                
+                // Submit form
+                this.submit();
+            } else {
+                alert('Please correct the errors in the form before submitting.');
+            }
+        });
+
+        // Delete user function
+        function deleteUser(userId) {
+            if (confirm('Are you sure you want to delete this user? This action cannot be undone.')) {
+                if (confirm('This will permanently remove all user data and case associations. Are you absolutely sure?')) {
+                    fetch(`/users/${userId}/delete`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            window.location.href = '/users';
+                        } else {
+                            alert('Error: ' + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('An error occurred. Please try again.');
+                    });
+                }
+            }
+        }
+
+        // Auto-format badge ID
+        document.getElementById('badge_id').addEventListener('input', function() {
+            let value = this.value.replace(/[^a-zA-Z0-9]/g, '');
+            this.value = value.toUpperCase();
+        });
+
+        // Add validation listeners
+        ['full_name', 'username', 'badge_id'].forEach(fieldName => {
+            const field = document.getElementById(fieldName);
+            if (field) {
+                field.addEventListener('blur', () => validateField(field));
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Edit user form loaded successfully');
+        });
+    </script>
+</body>
+</html>

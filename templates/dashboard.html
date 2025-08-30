@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFIS Dashboard - Department of Forensic Sciences</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            line-height: 1.6;
+        }
+
+        .header-bar {
+            background: #1d3557;
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9em;
+        }
+
+        .header-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gov-seal {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .seal-icon {
+            width: 24px;
+            height: 24px;
+            background: #ffd60a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #1d3557;
+            font-size: 12px;
+        }
+
+        .main-header {
+            background: white;
+            border-bottom: 3px solid #457b9d;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .main-header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .agency-info h1 {
+            font-size: 1.8em;
+            color: #1d3557;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .agency-info p {
+            font-size: 1.2em;
+            color: #457b9d;
+            font-weight: 400;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-info {
+            text-align: right;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: #1d3557;
+        }
+
+        .user-role {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        .nav-menu {
+            background: #457b9d;
+            padding: 0;
+        }
+
+        .nav-menu .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .nav-item {
+            flex: 1;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: #1d3557;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .welcome-section {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #457b9d;
+        }
+
+        .welcome-title {
+            font-size: 1.8em;
+            color: #1d3557;
+            margin-bottom: 10px;
+        }
+
+        .welcome-subtitle {
+            color: #6c757d;
+            font-size: 1.1em;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-top: 4px solid #457b9d;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .stat-card.success {
+            border-top-color: #28a745;
+        }
+
+        .stat-card.warning {
+            border-top-color: #ffc107;
+        }
+
+        .stat-card.info {
+            border-top-color: #17a2b8;
+        }
+
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #1d3557;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #6c757d;
+            font-weight: 500;
+            font-size: 0.95em;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .panel-header {
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            padding: 20px 25px;
+        }
+
+        .panel-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #1d3557;
+        }
+
+        .panel-body {
+            padding: 25px;
+        }
+
+        .cases-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cases-table th {
+            background: #f8f9fa;
+            padding: 12px;
+            text-align: left;
+            border-bottom: 2px solid #dee2e6;
+            font-weight: 600;
+            color: #495057;
+            font-size: 0.9em;
+        }
+
+        .cases-table td {
+            padding: 12px;
+            border-bottom: 1px solid #dee2e6;
+            font-size: 0.9em;
+        }
+
+        .cases-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-completed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-processing {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .match-indicator {
+            font-weight: 600;
+        }
+
+        .match-yes {
+            color: #28a745;
+        }
+
+        .match-no {
+            color: #dc3545;
+        }
+
+        .activity-list {
+            list-style: none;
+        }
+
+        .activity-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-text {
+            flex: 1;
+            font-size: 0.9em;
+        }
+
+        .activity-time {
+            font-size: 0.8em;
+            color: #6c757d;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 0.95em;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .btn-primary {
+            background: #1d3557;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0f1c2e;
+            transform: translateY(-1px);
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+        }
+
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 0.85em;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+        }
+
+        .empty-state h3 {
+            margin-bottom: 10px;
+            color: #495057;
+        }
+
+        .footer {
+            background: #1d3557;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-menu .container {
+                flex-direction: column;
+            }
+
+            .nav-item {
+                flex: none;
+            }
+
+            .user-menu {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .quick-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <div class="container">
+            <div class="gov-seal">
+                <div class="seal-icon">🛡</div>
+                <span>Official Government System</span>
+            </div>
+            <div>Secure Access Portal</div>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="container">
+            <div class="agency-info">
+                <h1>Department of Forensic Sciences</h1>
+                <p>Automated Fingerprint Identification System (AFIS)</p>
+            </div>
+            <div class="user-menu">
+                <div class="user-info">
+                    <div class="user-name">{{ session.full_name }}</div>
+                    <div class="user-role">{{ session.role|title }} • {{ session.badge_id }}</div>
+                </div>
+                <a href="{{ url_for('logout') }}" class="btn btn-sm" style="background: #dc3545; color: white;">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <div class="nav-item">
+                <a href="{{ url_for('dashboard') }}" class="nav-link active">Dashboard</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('new_case') }}" class="nav-link">New Analysis</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('list_cases') }}" class="nav-link">All Cases</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('profile') }}" class="nav-link">Profile</a>
+            </div>
+            {% if session.role == 'admin' %}
+            <div class="nav-item">
+                <a href="{{ url_for('admin_panel') }}" class="nav-link">Administration</a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else category }}" style="margin-bottom: 20px; padding: 15px; border-radius: 4px;">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="welcome-section">
+            <h2 class="welcome-title">Welcome back, {{ session.full_name }}</h2>
+            <p class="welcome-subtitle">AFIS Dashboard - Monitor your forensic analysis cases and system activity</p>
+            
+            <div class="quick-actions">
+                <a href="{{ url_for('new_case') }}" class="btn btn-primary">Start New Analysis</a>
+                <a href="{{ url_for('list_cases') }}" class="btn btn-success">View All Cases</a>
+            </div>
+        </div>
+
+        <!-- Statistics Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">{{ user_cases|length }}</div>
+                <div class="stat-label">Your Cases</div>
+            </div>
+            <div class="stat-card success">
+                <div class="stat-value">{{ total_matches }}</div>
+                <div class="stat-label">Total Matches Found</div>
+            </div>
+            <div class="stat-card warning">
+                <div class="stat-value">{{ total_cases }}</div>
+                <div class="stat-label">System-wide Cases</div>
+            </div>
+            <div class="stat-card info">
+                <div class="stat-value">{{ user_cases|selectattr('status', 'equalto', 'completed')|list|length }}</div>
+                <div class="stat-label">Completed Analyses</div>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <!-- Recent Cases -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h3 class="panel-title">Your Recent Cases</h3>
+                </div>
+                <div class="panel-body">
+                    {% if user_cases %}
+                        <table class="cases-table">
+                            <thead>
+                                <tr>
+                                    <th>Case ID</th>
+                                    <th>Mode</th>
+                                    <th>Comparisons</th>
+                                    <th>Matches</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for case in user_cases %}
+                                <tr>
+                                    <td><strong>{{ case.case_id }}</strong></td>
+                                    <td>{{ case.analysis_mode|title }}</td>
+                                    <td>{{ case.total_comparisons }}</td>
+                                    <td>
+                                        <span class="match-indicator {{ 'match-yes' if case.matches_found > 0 else 'match-no' }}">
+                                            {{ case.matches_found }}
+                                        </span>
+                                    </td>
+                                    <td>{{ case.created_at[:10] }}</td>
+                                    <td>
+                                        <a href="{{ url_for('display_results', case_id=case.case_id) }}" 
+                                           class="btn btn-sm btn-primary">View</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <div class="empty-state">
+                            <h3>No Cases Yet</h3>
+                            <p>Start your first forensic analysis case</p>
+                            <a href="{{ url_for('new_case') }}" class="btn btn-primary" style="margin-top: 15px;">Create New Case</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- System Activity -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h3 class="panel-title">Recent System Activity</h3>
+                </div>
+                <div class="panel-body">
+                    {% if recent_activity %}
+                        <ul class="activity-list">
+                            {% for activity in recent_activity %}
+                            <li class="activity-item">
+                                <div class="activity-text">
+                                    <strong>{{ activity.action|replace('_', ' ')|title }}</strong>
+                                    {% if activity.details %}
+                                        <br><small>{{ activity.details }}</small>
+                                    {% endif %}
+                                </div>
+                                <div class="activity-time">{{ activity.timestamp[:16] }}</div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <div class="empty-state">
+                            <p>No recent activity</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>Department of Forensic Sciences - AFIS Dashboard</div>
+    </div>
+
+    <style>
+        .alert {
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid transparent;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        .alert-info {
+            color: #0c5460;
+            background-color: #d1ecf1;
+            border-color: #bee5eb;
+        }
+    </style>
+</body>
+</html>

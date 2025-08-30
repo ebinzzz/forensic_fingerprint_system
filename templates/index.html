@@ -392,6 +392,35 @@
                 gap: 10px;
             }
         }
+           .nav-menu {
+            background: #457b9d;
+            padding: 0;
+        }
+
+        .nav-menu .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .nav-item {
+            flex: 1;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: #1d3557;
+        }
+
     </style>
 </head>
 <body>
@@ -412,12 +441,27 @@
         </div>
     </div>
 
-    <div class="breadcrumb">
+      <nav class="nav-menu">
         <div class="container">
-            Home > Forensic Analysis > Fingerprint Comparison > New Case
+            <div class="nav-item">
+                <a href="{{ url_for('dashboard') }}" class="nav-link">Dashboard</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('new_case') }}" class="nav-link active">New Analysis</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('list_cases') }}" class="nav-link">All Cases</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('profile') }}" class="nav-link">Profile</a>
+            </div>
+            {% if session.role == 'admin' %}
+            <div class="nav-item">
+                <a href="{{ url_for('admin_panel') }}" class="nav-link">Administration</a>
+            </div>
+            {% endif %}
         </div>
-    </div>
-
+    </nav>
     <div class="main-container">
         <div class="form-card">
             <div class="card-header">
@@ -441,8 +485,8 @@
                         
                         <div class="form-group">
                             <label for="operator_id" class="required">Forensic Examiner ID</label>
-                            <input type="text" id="operator_id" name="operator_id" class="form-control" required 
-                                   placeholder="Enter your examiner identification">
+                            <input type="text" id="operator_id" name="operator_id" value="{{ session.badge_id }}"class="form-control" required 
+                                   placeholder="Enter your examiner identification" READONLY>
                             <div class="form-help">Your certified forensic examiner identification number</div>
                         </div>
                     </div>

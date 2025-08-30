@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View User - AFIS System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            line-height: 1.6;
+        }
+
+        .header-bar {
+            background: #1d3557;
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9em;
+        }
+
+        .header-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gov-seal {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .seal-icon {
+            width: 24px;
+            height: 24px;
+            background: #ffd60a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #1d3557;
+            font-size: 12px;
+        }
+
+        .main-header {
+            background: white;
+            border-bottom: 3px solid #457b9d;
+            padding: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .main-header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .agency-info h1 {
+            font-size: 1.8em;
+            color: #1d3557;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .agency-info p {
+            font-size: 1.2em;
+            color: #457b9d;
+            font-weight: 400;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-info {
+            text-align: right;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: #1d3557;
+        }
+
+        .user-role {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        .nav-menu {
+            background: #457b9d;
+            padding: 0;
+        }
+
+        .nav-menu .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .nav-item {
+            flex: 1;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: #1d3557;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .welcome-section {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 4px solid #457b9d;
+        }
+
+        .welcome-title {
+            font-size: 1.8em;
+            color: #1d3557;
+            margin-bottom: 10px;
+        }
+
+        .welcome-subtitle {
+            color: #6c757d;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        .breadcrumb a {
+            color: #457b9d;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .user-profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+
+        .profile-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .profile-header {
+            background: linear-gradient(135deg, #1d3557, #457b9d);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: 600;
+            margin: 0 auto 15px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .profile-name {
+            font-size: 1.4em;
+            margin-bottom: 5px;
+        }
+
+        .profile-username {
+            opacity: 0.9;
+            font-size: 1em;
+        }
+
+        .profile-body {
+            padding: 25px;
+        }
+
+        .profile-field {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .profile-field:last-child {
+            border-bottom: none;
+        }
+
+        .field-label {
+            font-weight: 500;
+            color: #495057;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .field-value {
+            color: #212529;
+            font-weight: 400;
+        }
+
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-inactive {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .role-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .role-admin {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .role-examiner {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .role-technician {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .panel-header {
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            padding: 20px 25px;
+        }
+
+        .panel-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #1d3557;
+        }
+
+        .panel-body {
+            padding: 25px;
+        }
+
+        .cases-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cases-table th {
+            background: #f8f9fa;
+            padding: 12px;
+            text-align: left;
+            border-bottom: 2px solid #dee2e6;
+            font-weight: 600;
+            color: #495057;
+            font-size: 0.9em;
+        }
+
+        .cases-table td {
+            padding: 12px;
+            border-bottom: 1px solid #dee2e6;
+            font-size: 0.9em;
+        }
+
+        .cases-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            font-size: 0.95em;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .btn-primary {
+            background: #1d3557;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0f1c2e;
+            transform: translateY(-1px);
+        }
+
+        .btn-warning {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .btn-warning:hover {
+            background: #e0a800;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+        }
+
+        .empty-state h3 {
+            margin-bottom: 10px;
+            color: #495057;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            margin-bottom: 20px;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        .footer {
+            background: #1d3557;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .user-profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu .container {
+                flex-direction: column;
+            }
+
+            .nav-item {
+                flex: none;
+            }
+
+            .user-menu {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .action-buttons .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        <div class="container">
+            <div class="gov-seal">
+                <div class="seal-icon">🛡</div>
+                <span>Official Government System</span>
+            </div>
+            <div>Secure Access Portal</div>
+        </div>
+    </div>
+
+    <div class="main-header">
+        <div class="container">
+            <div class="agency-info">
+                <h1>Department of Forensic Sciences</h1>
+                <p>Automated Fingerprint Identification System (AFIS)</p>
+            </div>
+            <div class="user-menu">
+                <div class="user-info">
+                    <div class="user-name">{{ session.full_name }}</div>
+                    <div class="user-role">{{ session.role|title }} • {{ session.badge_id }}</div>
+                </div>
+                <a href="{{ url_for('logout') }}" class="btn btn-sm" style="background: #dc3545; color: white; padding: 6px 12px; font-size: 0.85em;">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="nav-menu">
+        <div class="container">
+            <div class="nav-item">
+                <a href="{{ url_for('dashboard') }}" class="nav-link">Dashboard</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('new_case') }}" class="nav-link">New Analysis</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('list_cases') }}" class="nav-link">All Cases</a>
+            </div>
+            <div class="nav-item">
+                <a href="{{ url_for('profile') }}" class="nav-link">Profile</a>
+            </div>
+            {% if session.role == 'admin' %}
+            <div class="nav-item">
+                <a href="{{ url_for('admin_panel') }}" class="nav-link active">Administration</a>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="welcome-section">
+            <h2 class="welcome-title">User Profile</h2>
+            <p class="welcome-subtitle">View user account details and system activity</p>
+            
+            <div class="breadcrumb">
+                <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                <span>›</span>
+                <a href="{{ url_for('list_users') }}">Users</a>
+                <span>›</span>
+                <span>{{ user.full_name }}</span>
+            </div>
+        </div>
+
+        <div class="user-profile-grid">
+            <!-- User Profile Card -->
+            <div class="profile-card">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        {{ user.full_name.split()[0][0] }}{{ user.full_name.split()[-1][0] if user.full_name.split()|length > 1 else '' }}
+                    </div>
+                    <div class="profile-name">{{ user.full_name }}</div>
+                    <div class="profile-username">@{{ user.username }}</div>
+                </div>
+                <div class="profile-body">
+                    <div class="profile-field">
+                        <span class="field-label">
+                            🏷️ Badge ID
+                        </span>
+                        <span class="field-value">{{ user.badge_id }}</span>
+                    </div>
+                    <div class="profile-field">
+                        <span class="field-label">
+                            🏢 Department
+                        </span>
+                        <span class="field-value">{{ user.department or 'Not specified' }}</span>
+                    </div>
+                    <div class="profile-field">
+                        <span class="field-label">
+                            ⭐ Role
+                        </span>
+                        <span class="field-value">
+                            <span class="role-badge role-{{ user.role }}">
+                                {{ user.role.title() }}
+                            </span>
+                        </span>
+                    </div>
+                    <div class="profile-field">
+                        <span class="field-label">
+                            📅 Status
+                        </span>
+                        <span class="field-value">
+                            <span class="status-badge status-{{ 'active' if user.is_active else 'inactive' }}">
+                                {{ 'Active' if user.is_active else 'Inactive' }}
+                            </span>
+                        </span>
+                    </div>
+                    <div class="profile-field">
+                        <span class="field-label">
+                            📋 Total Cases
+                        </span>
+                        <span class="field-value">{{ user.total_cases or 0 }}</span>
+                    </div>
+                    <div class="profile-field">
+                        <span class="field-label">
+                            🕒 Last Login
+                        </span>
+                        <span class="field-value">
+                            {% if user.last_login %}
+                                {% if user.last_login is string %}
+                                    {{ user.last_login }}
+                                {% else %}
+                                    {{ user.last_login.strftime('%m/%d/%Y %I:%M %p') }}
+                                {% endif %}
+                            {% else %}
+                                Never
+                            {% endif %}
+                        </span>
+                    </div>
+                    <div class="profile-field">
+                        <span class="field-label">
+                            📅 Created
+                        </span>
+                        <span class="field-value">
+                            {% if user.created_at %}
+                                {% if user.created_at is string %}
+                                    {{ user.created_at }}
+                                {% else %}
+                                    {{ user.created_at.strftime('%m/%d/%Y') }}
+                                {% endif %}
+                            {% else %}
+                                Unknown
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <a href="{{ url_for('edit_user', user_id=user.id) }}" class="btn btn-warning">
+                        ✏️ Edit User
+                    </a>
+                    {% if user.is_active %}
+                        <button class="btn btn-danger" onclick="toggleUserStatus({{ user.id }}, false)">
+                            🔒 Deactivate
+                        </button>
+                    {% else %}
+                        <button class="btn btn-success" onclick="toggleUserStatus({{ user.id }}, true)">
+                            🔓 Activate
+                        </button>
+                    {% endif %}
+                    <a href="{{ url_for('list_users') }}" class="btn btn-secondary">
+                        ← Back to Users
+                    </a>
+                </div>
+            </div>
+
+            <!-- User Activity Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h3 class="panel-title">Recent Cases</h3>
+                </div>
+                <div class="panel-body">
+                    {% if user_cases %}
+                        <table class="cases-table">
+                            <thead>
+                                <tr>
+                                    <th>Case ID</th>
+                                    <th>Analysis Mode</th>
+                                    <th>Matches</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for case in user_cases %}
+                                <tr>
+                                    <td><strong>{{ case.case_id }}</strong></td>
+                                    <td>{{ case.analysis_mode|title }}</td>
+                                    <td>
+                                        <span style="color: {{ '#28a745' if case.matches_found > 0 else '#dc3545' }}; font-weight: 600;">
+                                            {{ case.matches_found }}
+                                        </span>
+                                    </td>
+                                    <td>{{ case.created_at[:10] if case.created_at else 'N/A' }}</td>
+                                    <td>
+                                        <span class="status-badge status-{{ case.status or 'processing' }}">
+                                            {{ (case.status or 'processing').title() }}
+                                        </span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <div class="empty-state">
+                            <h3>No Cases Found</h3>
+                            <p>This user hasn't created any analysis cases yet.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>Department of Forensic Sciences - AFIS User Management</div>
+    </div>
+
+    <script>
+        function toggleUserStatus(userId, activate) {
+            const action = activate ? 'activate' : 'deactivate';
+            const message = activate ? 'activate this user' : 'deactivate this user';
+            
+            if (confirm(`Are you sure you want to ${message}?`)) {
+                fetch(`/users/${userId}/${action}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ activate: activate })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert('Error: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again.');
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('User profile page loaded successfully');
+        });
+    </script>
+</body>
+</html>
